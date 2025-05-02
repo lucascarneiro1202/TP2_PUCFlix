@@ -107,7 +107,7 @@ Classe para criar a Entidade Ator. Implementa a interface EntidadeArquivo
 
 #### Funções
 
-+ Set e get de todos os atributos
++ Set e Get de todos os atributos
 + Contrutor com todos os parâmetros (Nesse método, deve haver a validação das entradas, permitindo valores vazios convencionados)
 + Construtor com todos os parâmetros, exceto o ID (Executa o construtor completo com ID = -1)
 + Construtor com todos os parâmetros vazios (Executa o construtor completo com os valores vazios convencionados: ID = -1, String = "", char = 'I' (indeterminado), LocalDate = data atual)
@@ -116,7 +116,7 @@ Classe para criar a Entidade Ator. Implementa a interface EntidadeArquivo
 +---------------------------+
 | ID................: 1     |
 | Nome..............: XXXXX |
-| Gênero............: 2     |
+| Gênero............: 'M'   |
 | Data de Nascimento: 2020  |
 |            ...            |
 +---------------------------+
@@ -527,12 +527,9 @@ PucFlix v(versao)
 
 # Planos futuros
 
-
 # Materiais adicionais
 
 Para o planejamento inicial, utilizamos o [google docs](https://docs.google.com/document/d/1C75ZqCawQ5OhWpXl3aonh7J_1SdRE6VenWqyXlGX72c/edit?tab=t.0), definindo regras gerais do processo, datas de reunião e datas de entrega.
-
-![Calendário de planejamento](images/calendario.png)
 
 # ✒️ Autores
 + *Augusto Stambassi Duarte* - Project Manager 🧑‍💼 - [Git Pessoal](https://github.com/stambassi)
