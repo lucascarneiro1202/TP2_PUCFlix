@@ -111,27 +111,4 @@ public class ArquivoAtor extends Arquivo<Ator> {
         return atores;
     }
 
-    /*
-     * readAtuacao - Retorna todas as atuações do Ator (por série)
-     */
-    public int[] readAtuacao(int idAtor) throws Exception {
-        ArquivoAtuacao arqAtuacao = new ArquivoAtuacao();
-
-        if (!ControleAtor.validarAtor(idAtor))
-            throw new Exception("ID do Ator inválido");
-
-        List<ParIDID> atuacoes = indiceAtuacaoAtor.read(new ParIDID(idAtor, -1));
-
-        if (atuacoes.isEmpty())
-            throw new Exception("Não há atuações registradas para este Ator!");
-
-        int[] idSeries = new int[atuacoes.size()];
-        int i = 0;
-
-        for (ParIDID p : atuacoes) {
-            idSeries[i++] = p.getID2();  // getID2 = ID da série
-        }
-
-        return idSeries;
-    }
 }

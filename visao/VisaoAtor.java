@@ -1,6 +1,7 @@
 package visao;
 
 import entidades.Ator;
+import entidades.Atuacao;
 import controle.ControleAtor;
 
 import java.time.LocalDate;
@@ -48,13 +49,13 @@ public class VisaoAtor {
 
             // Execução da ação conforme a opção
             switch (opcao) {
-                case 1: incluirAtor();
-                case 2: excluirAtor();
-                case 3: alterarAtor();
-                case 4: mostrarAtor(buscarUmAtor());
-                case 5: buscarAtuacoes();
-                case 0: System.out.println("Saindo...");
-                default: System.err.println("[ERRO]: Opção inválida!");
+                case 1: incluirAtor(); break;
+                case 2: excluirAtor(); break;
+                case 3: alterarAtor(); break;
+                case 4: mostrarAtor(buscarUmAtor()); break;
+                case 5: buscarAtuacoes(); break;
+                case 0: System.out.println("Saindo..."); break;
+                default: System.err.println("[ERRO]: Opção inválida!"); break;
             }
 
         } while (opcao != 0);
@@ -226,11 +227,11 @@ public class VisaoAtor {
     public void buscarAtuacoes() {
         try {
             Ator a = buscarUmAtor();
-            int[] idsSeries = controleAtor.buscarAtuacaoAtor(a.getID());
+            List<Atuacao> atuacoes = controleAtor.buscarAtuacaoAtor(a.getID());
 
             System.out.println("\nAtuações de " + a.getNome() + ":");
-            for (int idSerie : idsSeries) {
-                System.out.println("- ID da Série: " + idSerie);
+            for (Atuacao at : atuacoes) {
+                System.out.println(at);
             }
         } catch (Exception e) {
             System.err.println("\n[ERRO]: " + e.getMessage());

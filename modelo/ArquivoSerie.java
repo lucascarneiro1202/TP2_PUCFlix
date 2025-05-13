@@ -145,7 +145,7 @@ public class ArquivoSerie extends Arquivo<Serie> {
 
         for (ParIDID pii : piis) {
             // Buscar Episódio referente ao Par Série-Episódio
-            Episodio e = arqEpisodio.read(pii.getIDEpisodio());
+            Episodio e = arqEpisodio.read(pii.getID_Dependente());
 
             // Adicionar o episódio encontrado no array de Episódios
             episodios[i++] = e;

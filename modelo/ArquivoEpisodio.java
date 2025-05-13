@@ -170,7 +170,7 @@ public class ArquivoEpisodio extends Arquivo<Episodio> {
         // Iterar sobre a lista de Pares Série-Episódio a adicionar os Episódios correspondentes ao array de Episódios
         int i = 0;
         for(ParIDID pii: piis) 
-            episodios[i++] = this.read(pii.getIDEpisodio());
+            episodios[i++] = this.read(pii.getID_Dependente());
 
         // Retornar
         return episodios;

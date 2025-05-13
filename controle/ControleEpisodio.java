@@ -167,8 +167,8 @@ public class ControleEpisodio {
         if (e == null)
             throw new Exception("Episódio não encontrado!");
 
-        System.out.println("[ControleEpisodio]");
-        System.out.print(e);
+        // System.out.println("[ControleEpisodio]");
+        // System.out.print(e);
 
         // Testar se o Episódio pertence à Série da instância atual
         if ( e.getIDSerie() != this.serie.getID() ) 

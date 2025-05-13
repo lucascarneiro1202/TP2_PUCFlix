@@ -5,16 +5,16 @@ import java.io.*;
 import aeds3.RegistroArvoreBMais;
 
 public class ParIDID implements RegistroArvoreBMais<ParIDID> {
-    private int IDSerie;
-    private int IDEpisodio;
+    private int ID;
+    private int ID_Dependente;
     private final short TAMANHO = 8;
 
     /**
      * Construtor padrão, inicializa com valores -1
      */
     public ParIDID() {
-        this.IDSerie = -1;
-        this.IDEpisodio = -1;
+        this.ID = -1;
+        this.ID_Dependente = -1;
     }
 
     /**
@@ -23,24 +23,24 @@ public class ParIDID implements RegistroArvoreBMais<ParIDID> {
      * @param idEp (int): ID do episódio
      */
     public ParIDID(int idS, int idEp) {
-        this.IDSerie = idS;
-        this.IDEpisodio = idEp;
+        this.ID = idS;
+        this.ID_Dependente = idEp;
     }
 
     /**
      * Retorna o ID da série
      * @return (int) ID da série
      */
-    public int getIDSerie() {
-        return IDSerie;
+    public int getID() {
+        return ID;
     }
 
     /**
      * Retorna o ID do episódio
      * @return (int) ID do episódio
      */
-    public int getIDEpisodio() {
-        return IDEpisodio;
+    public int getID_Dependente() {
+        return ID_Dependente;
     }
 
     /**
@@ -58,8 +58,8 @@ public class ParIDID implements RegistroArvoreBMais<ParIDID> {
     public byte[] toByteArray() throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);
-        dos.writeInt(IDSerie);
-        dos.writeInt(IDEpisodio);
+        dos.writeInt(ID);
+        dos.writeInt(ID_Dependente);
         return baos.toByteArray();
     }
 
@@ -70,8 +70,8 @@ public class ParIDID implements RegistroArvoreBMais<ParIDID> {
     public void fromByteArray(byte[] ba) throws IOException {
         ByteArrayInputStream bais = new ByteArrayInputStream(ba);
         DataInputStream dis = new DataInputStream(bais);
-        this.IDSerie = dis.readInt();
-        this.IDEpisodio = dis.readInt();
+        this.ID = dis.readInt();
+        this.ID_Dependente = dis.readInt();
     }
 
     /**
@@ -80,12 +80,12 @@ public class ParIDID implements RegistroArvoreBMais<ParIDID> {
      * @return (int) Valor negativo, zero ou positivo conforme a ordem crescente de IDs
      */
     public int compareTo(ParIDID obj) {
-        if (this.IDSerie != obj.IDSerie)
-            return this.IDSerie - obj.IDSerie;
+        if (this.ID != obj.ID)
+            return this.ID - obj.ID;
         else
         // Só compara os valores de id2, se o id2 da busca for diferente de -1
         // Isso é necessário para que seja possível a busca de lista
-            return this.IDEpisodio == -1 ? 0 : this.IDEpisodio - obj.IDEpisodio;
+            return this.ID_Dependente == -1 ? 0 : this.ID_Dependente - obj.ID_Dependente;
     }
 
     /**
@@ -93,7 +93,7 @@ public class ParIDID implements RegistroArvoreBMais<ParIDID> {
      * @return (ParIDID) Clone do objeto atual
      */
     public ParIDID clone() {
-        return new ParIDID(this.IDSerie, this.IDEpisodio);
+        return new ParIDID(this.ID, this.ID_Dependente);
     }
 
     /**
@@ -102,6 +102,6 @@ public class ParIDID implements RegistroArvoreBMais<ParIDID> {
      */
     @Override
     public String toString() {
-        return "(Série: " + IDSerie + ", Episódio: " + IDEpisodio + ")";
+        return "(Série: " + ID + ", Episódio: " + ID_Dependente + ")";
     }
 }

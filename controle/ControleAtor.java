@@ -1,7 +1,9 @@
 package controle;
 
 import modelo.ArquivoAtor;
+import modelo.ArquivoAtuacao;
 import entidades.Ator;
+import entidades.Atuacao;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -109,12 +111,13 @@ public class ControleAtor {
     }
 
     /*
-     * buscarAtuacaoAtor - Retorna os IDs das séries em que o Ator atuou
+     * buscarAtuacaoAtor - Retorna as atuações em que o Ator atuou
      * @param idAtor - ID do Ator
-     * @return int[] com IDs de séries
+     * @return List<Atuacao> de atuacoes
      */
-    public int[] buscarAtuacaoAtor(int idAtor) throws Exception {
-        return arqAtor.readAtuacao(idAtor);
+    public List<Atuacao> buscarAtuacaoAtor(int idAtor) throws Exception {
+        ArquivoAtuacao arqAtuacao = new ArquivoAtuacao();
+        return arqAtuacao.readAtor(idAtor);
     }
 
     /*

@@ -2,6 +2,7 @@ package visao;
 
 import entidades.Serie;
 import entidades.Episodio;
+import controle.ControleAtuacao;
 import controle.ControleSerie;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class VisaoSerie {
             System.out.println("3 - Alterar Série");
             System.out.println("4 - Buscar Série");
             System.out.println("5 - Buscar Episódios");
+            System.out.println("6 - Editar Elenco");
             System.out.println("0 - Sair");
             // Ler opção do usuário
             System.out.print("\nOpção: ");
@@ -48,14 +50,19 @@ public class VisaoSerie {
                 opcao = -1;
             }
             // Testar opção do usuário
-            switch (opcao) {
-                case 1: incluirSerie(); break;
-                case 2: excluirSerie(); break;
-                case 3: alterarSerie(); break;
-                case 4: buscarUmaSerie(); break;
-                case 5: buscarEpisodios(); break;
-                case 0: break;
-                default: System.err.println("\n[ERRO]: Opção inválida!"); break;
+            try {
+                switch (opcao) {
+                    case 1: incluirSerie(); break;
+                    case 2: excluirSerie(); break;
+                    case 3: alterarSerie(); break;
+                    case 4: buscarUmaSerie(); break;
+                    case 5: buscarEpisodios(); break;
+                    case 6: new VisaoAtuacao().menu(versao); break;
+                    case 0: break;
+                    default: System.err.println("\n[ERRO]: Opção inválida!"); break;
+                }
+            } catch (Exception e) {
+                System.err.println("[ERRO]: " + e.getMessage());
             }
         } while (opcao != 0);
     }
