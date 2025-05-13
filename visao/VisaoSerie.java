@@ -543,9 +543,6 @@ public class VisaoSerie {
         String nome = console.nextLine();  // Lê o título digitado pelo usuário
         // Definir lista de Séries
         List<Serie> series = new ArrayList<Serie>();
-        // Testar se a lista está vazia
-        if(nome.isEmpty())
-            return series;
         // Tentar buscar Séries a partir do Nome 
         try {
             series = controleSerie.buscarSerie(nome);  // Chama o método de leitura da classe Arquivo

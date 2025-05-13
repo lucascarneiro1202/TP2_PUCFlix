@@ -2,6 +2,8 @@ package entidades;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import aeds3.EntidadeArquivo;
 
 public class Ator implements EntidadeArquivo {
@@ -64,11 +66,13 @@ public class Ator implements EntidadeArquivo {
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
         sb.append("\n+---------------------------+\n");
         sb.append(String.format("| ID................: %d\n", ID));
         sb.append(String.format("| Nome..............: %s\n", nome));
         sb.append(String.format("| Gênero............: '%c'\n", genero));
-        sb.append(String.format("| Data de Nascimento: %s\n", dataNascimento.toString()));
+        sb.append(String.format("| Data de Nascimento: %s\n", dataNascimento.format(formatter)));
         sb.append(String.format("| Nacionalidade.....: %s\n", nacionalidade));
         sb.append("+---------------------------+");
         return sb.toString();

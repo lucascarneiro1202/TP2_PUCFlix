@@ -161,10 +161,6 @@ public class ArquivoSerie extends Arquivo<Serie> {
      * @return series - Array de Séries cujo nome começa com determinada String
      */
     public Serie[] readNome(String nome) throws Exception {
-        // Testar se o nome é válido
-        if (nome.length() == 0)
-            throw new Exception("Nome inválido!");
-
         // Definir lista de Par Nome-ID que possuem a String especificada
         ParNomeID pnid = new ParNomeID(nome, -1);
         ArrayList<ParNomeID> pnis = indiceNome.read(pnid);

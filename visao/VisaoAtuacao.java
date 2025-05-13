@@ -4,6 +4,7 @@ import entidades.Ator;
 import entidades.Atuacao;
 import entidades.Episodio;
 import entidades.Serie;
+import controle.ControleAtor;
 import controle.ControleAtuacao;
 import controle.ControleSerie;
 
@@ -41,7 +42,7 @@ public class VisaoAtuacao {
             // Mostrar cabeçalho
             System.out.println("\nPUCFlix v" + versao);
             System.out.println("--------------------------");
-            System.out.println("> Início > Atuações\n");
+            System.out.println("> Início > Séries > Elenco\n");
             System.out.println("1 - Incluir Atuação");
             System.out.println("2 - Excluir Atuação");
             System.out.println("3 - Alterar Atuação");
@@ -392,9 +393,6 @@ public class VisaoAtuacao {
         String nome = console.nextLine();  // Lê o título digitado pelo usuário
         // Definir lista de Atuações
         List<Atuacao> Atuacaos = new ArrayList<Atuacao>();
-        // Testar se a lista está vazia
-        if(nome.isEmpty())
-            return Atuacaos;
         // Tentar buscar Atuações a partir do Nome 
         try {
             Atuacaos = controleAtuacao.buscarAtuacao(nome);  // Chama o método de leitura da classe Arquivo
@@ -470,18 +468,66 @@ public class VisaoAtuacao {
         if (Atuacao != null) {
             try {
                 ControleSerie cs = new ControleSerie();
+                ControleAtor ca = new ControleAtor();
 
-                Pattern pattern = Pattern.compile("\\| IDSérie[.:]+\\s*\\d+\\s*\\|");
-        
+                String serieNome = cs.buscarSerie(Atuacao.getIDSerie()).getNome();
+                String atorNome = ca.buscarAtor(Atuacao.getIDAtor()).getNome();
+                Pattern pattern = Pattern.compile("\\| IDSerie[.:]+\\s*\\d+\\s*\\|");
+
+                Pattern pattern2 = Pattern.compile("\\| IDAtor[.:]+\\s*\\d+\\s*\\|");
+
                 // Replace the IDSérie line with the new Série line
                 String updated = Atuacao.toString().replaceAll(pattern.pattern(), 
-                String.format("| Série......: %s |", cs.buscarSerie(Atuacao.getIDSerie()).getNome()));
+                String.format("| Série.....: %s |", serieNome));
 
-                System.out.println(updated);
+                updated = updated.replaceAll(pattern2.pattern(), 
+                String.format("| Ator......: %s |", atorNome));
+
+                // Split into lines
+                String[] lines = updated.split("\n");
+                
+                String[] todos = {atorNome, serieNome, Atuacao.getPersonagem()};
+
+                // Find maximum line length (excluding borders)
+                int maxLength = 0;
+                for (String line : todos) {
+                    maxLength = Math.max(maxLength, line.length());
+                }
+                
+                // Rebuild lines with proper padding
+                int lastInfo = 0;
+                String contentToPrint = " ";
+                StringBuilder result = new StringBuilder();
+                for (String line : lines) {
+                    //System.out.println(line);
+                    if (line.length() > 0 ){
+                        if (line.startsWith("+")) {
+                            // Adjust border length to match content
+                            String border = "+" + "-".repeat(maxLength + 14) + "+";
+                            result.append(border).append("\n");
+                        } else {
+                            // Pad content lines
+                            result.append(line.substring(0, 13));
+                            if (lastInfo == 0){
+                                contentToPrint = String.valueOf(Atuacao.getID());
+                            } else 
+                                contentToPrint = todos[lastInfo-1];
+                            String paddedLine = String.format(" %-" + (maxLength) + "s |", contentToPrint);
+                            result.append(paddedLine).append("\n");
+                            lastInfo ++;
+                        }
+                    }
+                }
+                
+                String finalString = result.toString();
+
+                System.out.println("\n"+finalString.trim());
                 
             } catch (Exception e){
+                e.printStackTrace();
                 System.err.println("\n[ERRO]: " + e.getMessage());
             }
         }
     }
+
 }

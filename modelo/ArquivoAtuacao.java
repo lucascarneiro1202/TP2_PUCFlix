@@ -162,19 +162,11 @@ public class ArquivoAtuacao extends Arquivo<Atuacao> {
      * @return Atuacoes - Array de Episódios encontrados
      */
     public List<Atuacao> readPersonagem(String nome) throws Exception {
-        // Testar se o nome é válido
-        if (nome.length() == 0)
-            throw new Exception("Nome inválido!");
-
         // Definir Lista de Pares Nome-ID que possuem a String especificada
         ParNomeID pnid = new ParNomeID(nome, -1);
         // System.out.println(pnid);
         List<ParNomeID> pnis = indicePersonagem.read(pnid);
         // System.out.println(pnis + ", tamanho: "+pnis.size());
-
-        // Testar se há algum Par encontrado
-        if ( !(pnis.size() > 0) )
-            throw new Exception ("Não foi encontrado nenhuma Atuação de Ator com o nome buscado!");
         
         // Definir array de Episódios com o tamanho do número de pares
         Atuacao[] Atuacoes = new Atuacao[pnis.size()];

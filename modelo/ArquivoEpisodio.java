@@ -121,10 +121,6 @@ public class ArquivoEpisodio extends Arquivo<Episodio> {
      * @return episodios - Array de Episódios encontrados
      */
     public Episodio[] readNome(String nome) throws Exception {
-        // Testar se o nome é válido
-        if (nome.length() == 0)
-            throw new Exception("Nome inválido!");
-
         // Definir Lista de Pares Nome-ID que possuem a String especificada
         ParNomeID pnid = new ParNomeID(nome, -1);
         // System.out.println(pnid);

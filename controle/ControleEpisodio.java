@@ -61,6 +61,24 @@ public class ControleEpisodio {
     }
 
     /*
+     * incluirEpisodio - Função para adicionar um Episódio ao Banco de Dados
+     * @param e - Episódio a ser inserido
+     * @param id - ID do Episódio inserido
+     */
+    public int incluirEpisodioPovoar(Episodio e) throws Exception {
+        // Testar se o objeto Episódio é válido
+        if (e == null)
+            throw new Exception ("Episódio nulo!");
+
+        // Criar o Episódio a partir do ArquivoEpisódio
+        int id = arqEpisodio.create(e);
+
+        // Retornar
+        return id;
+    }
+
+
+    /*
      * excluirEpisodio - Função para excluir um Episódio a partir do seu ID
      * @param id - ID do Episódio a ser excluído
      * @return boolean - True se bem sucedido, False caso contrário
@@ -294,22 +312,205 @@ public class ControleEpisodio {
             // Inserir Episódio
             diretores.add("Takahiro Ikezoe");
             diretores.add("Yasuhiro Irie");
-            incluirEpisodio(new Episodio(this.serie.getID(), "Hagane no renkinjutsushi", 1, LocalDate.of(2009, 04, 05), 24.0F, 7, diretores));
+            incluirEpisodioPovoar(new Episodio(this.serie.getID(), "Hagane no renkinjutsushi", 1, LocalDate.of(2009, 04, 05), 24.0F, 7, diretores));
 
             // Inserir Episódio
             diretores.clear();
             diretores.add("Hiromu Arakawa");
             diretores.add("Hiroshi Ônogi");
-            incluirEpisodio(new Episodio(this.serie.getID(), "Hajimari no hi", 1, LocalDate.of(2009, 04, 12), 24.0F, 8, diretores));
+            incluirEpisodioPovoar(new Episodio(this.serie.getID(), "Hajimari no hi", 1, LocalDate.of(2009, 04, 12), 24.0F, 8, diretores));
 
             // Inserir Episódio
             diretores.clear();
             diretores.add("Yasuhiro Irie");
             diretores.add("Masao Ôkubo");
-            incluirEpisodio(new Episodio(this.serie.getID(), "Jakyô no machi", 1, LocalDate.of(2009, 04, 19), 24.0F, 7, diretores));
+            incluirEpisodioPovoar(new Episodio(this.serie.getID(), "Jakyô no machi", 1, LocalDate.of(2009, 04, 19), 24.0F, 7, diretores));
 
+
+
+            // Attack on Titan
+            diretores.add("Tetsurō Araki");
+            incluirEpisodioPovoar(new Episodio(12, "To You, 2,000 Years in the Future", 1, LocalDate.of(2013, 4, 7), 24.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Tetsurō Araki");
+            incluirEpisodioPovoar(new Episodio(12, "That Day", 1, LocalDate.of(2013, 4, 14), 24.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Masashi Koizuka");
+            incluirEpisodioPovoar(new Episodio(12, "A Dim Light Amid Despair", 1, LocalDate.of(2013, 4, 21), 24.0F, 8, diretores));
+
+            diretores.clear();
+            diretores.add("Shinji Higuchi");
+            incluirEpisodioPovoar(new Episodio(12, "The Night of the Closing Ceremony", 1, LocalDate.of(2013, 4, 28), 24.0F, 8, diretores));
+
+            diretores.clear();
+            diretores.add("Tetsurō Araki");
+            diretores.add("Masashi Koizuka");
+            incluirEpisodioPovoar(new Episodio(12, "First Battle", 1, LocalDate.of(2013, 5, 5), 24.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Yūsuke Kaneda");
+            incluirEpisodioPovoar(new Episodio(12, "The World the Girl Saw", 1, LocalDate.of(2013, 5, 12), 24.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Tetsurō Araki");
+            incluirEpisodioPovoar(new Episodio(12, "Small Blade", 1, LocalDate.of(2013, 5, 19), 24.0F, 8, diretores));
+
+            diretores.clear();
+            diretores.add("Masashi Koizuka");
+            incluirEpisodioPovoar(new Episodio(12, "I Can Hear His Heartbeat", 1, LocalDate.of(2013, 5, 26), 24.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Shinji Higuchi");
+            incluirEpisodioPovoar(new Episodio(12, "Whereabouts of His Left Arm", 1, LocalDate.of(2013, 6, 2), 24.0F, 8, diretores));
+
+            diretores.clear();
+            diretores.add("Tetsurō Araki");
+            diretores.add("Yūsuke Kaneda");
+            incluirEpisodioPovoar(new Episodio(12, "Response", 1, LocalDate.of(2013, 6, 9), 24.0F, 9, diretores));
             System.out.println("\nEpisódios povoados!");
 
+            // Black Mirror
+            diretores.add("Owen Harris");  
+            incluirEpisodioPovoar(new Episodio(1, "San Junipero", 4, LocalDate.of(2016, 10, 21), 61.0F, 10, diretores));  
+
+            diretores.clear();  
+            diretores.add("Joe Wright");  
+            incluirEpisodioPovoar(new Episodio(1, "Nosedive", 3, LocalDate.of(2016, 10, 21), 63.0F, 8, diretores));  
+
+            diretores.clear();  
+            diretores.add("Dan Trachtenberg");  
+            incluirEpisodioPovoar(new Episodio(1, "Playtest", 3, LocalDate.of(2016, 10, 21), 57.0F, 9, diretores));  
+
+            diretores.clear();  
+            diretores.add("Jodie Foster");  
+            incluirEpisodioPovoar(new Episodio(1, "Arkangel", 4, LocalDate.of(2017, 12, 29), 52.0F, 7, diretores));  
+
+            diretores.clear();  
+            diretores.add("Colm McCarthy");  
+            incluirEpisodioPovoar(new Episodio(1, "Hated in the Nation", 3, LocalDate.of(2016, 10, 21), 89.0F, 9, diretores));  
+
+            diretores.clear();  
+            diretores.add("Toby Haynes");  
+            incluirEpisodioPovoar(new Episodio(1, "USS Callister", 4, LocalDate.of(2017, 12, 29), 76.0F, 10, diretores));  
+
+            diretores.clear();  
+            diretores.add("James Hawes");  
+            incluirEpisodioPovoar(new Episodio(1, "The Entire History of You", 1, LocalDate.of(2011, 12, 18), 44.0F, 9, diretores));  
+
+            diretores.clear();  
+            diretores.add("John Hillcoat");  
+            incluirEpisodioPovoar(new Episodio(1, "Metalhead", 4, LocalDate.of(2017, 12, 29), 41.0F, 7, diretores));  
+
+            diretores.clear();  
+            diretores.add("Tim Van Patten");  
+            incluirEpisodioPovoar(new Episodio(1, "Striking Vipers", 5, LocalDate.of(2019, 6, 5), 61.0F, 8, diretores));  
+
+            diretores.clear();  
+            diretores.add("David Slade");  
+            incluirEpisodioPovoar(new Episodio(1, "Bandersnatch", 5, LocalDate.of(2018, 12, 28), 90.0F, 9, diretores));  
+
+
+            //Breaking Bad
+            diretores.add("Vince Gilligan");
+            incluirEpisodioPovoar(new Episodio(2, "Pilot", 1, LocalDate.of(2008, 1, 20), 58.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Adam Bernstein");
+            incluirEpisodioPovoar(new Episodio(2, "Grilled", 2, LocalDate.of(2009, 3, 8), 48.0F, 10, diretores));
+
+            diretores.clear();
+            diretores.add("Rian Johnson");
+            incluirEpisodioPovoar(new Episodio(2, "Fly", 3, LocalDate.of(2010, 5, 23), 47.0F, 8, diretores));
+
+            diretores.clear();
+            diretores.add("Michelle MacLaren");
+            incluirEpisodioPovoar(new Episodio(2, "One Minute", 3, LocalDate.of(2010, 5, 2), 48.0F, 10, diretores));
+
+            diretores.clear();
+            diretores.add("Johan Renck");
+            incluirEpisodioPovoar(new Episodio(2, "Crawl Space", 4, LocalDate.of(2011, 9, 25), 47.0F, 10, diretores));
+
+            diretores.clear();
+            diretores.add("Michael Slovis");
+            incluirEpisodioPovoar(new Episodio(2, "Dead Freight", 5, LocalDate.of(2012, 8, 19), 48.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Bryan Cranston");
+            incluirEpisodioPovoar(new Episodio(2, "Blood Money", 5, LocalDate.of(2013, 8, 11), 48.0F, 10, diretores));
+
+            diretores.clear();
+            diretores.add("Michelle MacLaren");
+            incluirEpisodioPovoar(new Episodio(2, "Salud", 4, LocalDate.of(2011, 9, 18), 48.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Vince Gilligan");
+            incluirEpisodioPovoar(new Episodio(2, "Ozymandias", 5, LocalDate.of(2013, 9, 15), 47.0F, 10, diretores));
+
+            diretores.clear();
+            diretores.add("Peter Gould");
+            incluirEpisodioPovoar(new Episodio(2, "Felina", 5, LocalDate.of(2013, 9, 29), 55.0F, 10, diretores));
+
+            // Chernobyl (ID: 3) - Limited Series
+            diretores.add("Johan Renck");
+            incluirEpisodioPovoar(new Episodio(3, "1:23:45", 1, LocalDate.of(2019, 5, 6), 65.0F, 10, diretores));
+
+            diretores.clear();
+            diretores.add("Johan Renck");
+            incluirEpisodioPovoar(new Episodio(3, "Please Remain Calm", 2, LocalDate.of(2019, 5, 13), 65.0F, 10, diretores));
+
+            diretores.clear();
+            diretores.add("Johan Renck");
+            incluirEpisodioPovoar(new Episodio(3, "Open Wide, O Earth", 3, LocalDate.of(2019, 5, 20), 65.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Johan Renck");
+            incluirEpisodioPovoar(new Episodio(3, "The Happiness of All Mankind", 4, LocalDate.of(2019, 5, 27), 67.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Johan Renck");
+            incluirEpisodioPovoar(new Episodio(3, "Vichnaya Pamyat", 5, LocalDate.of(2019, 6, 3), 72.0F, 10, diretores));
+
+            // Dark (ID: 14)
+            diretores.add("Baran bo Odar");
+            incluirEpisodioPovoar(new Episodio(14, "Secrets", 1, LocalDate.of(2017, 12, 1), 51.0F, 8, diretores));
+
+            diretores.clear();
+            diretores.add("Baran bo Odar");
+            incluirEpisodioPovoar(new Episodio(14, "Lies", 1, LocalDate.of(2017, 12, 1), 44.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Baran bo Odar");
+            incluirEpisodioPovoar(new Episodio(14, "Beginnings and Endings", 2, LocalDate.of(2019, 6, 21), 52.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Baran bo Odar");
+            incluirEpisodioPovoar(new Episodio(14, "The Travelers", 2, LocalDate.of(2019, 6, 21), 44.0F, 10, diretores));
+
+            diretores.clear();
+            diretores.add("Baran bo Odar");
+            incluirEpisodioPovoar(new Episodio(14, "Deja-vu", 3, LocalDate.of(2020, 6, 27), 58.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Baran bo Odar");
+            incluirEpisodioPovoar(new Episodio(14, "The Paradise", 3, LocalDate.of(2020, 6, 27), 63.0F, 10, diretores));
+
+            diretores.clear();
+            diretores.add("Baran bo Odar");
+            incluirEpisodioPovoar(new Episodio(14, "Alpha and Omega", 2, LocalDate.of(2019, 6, 21), 47.0F, 10, diretores));
+
+            diretores.clear();
+            diretores.add("Baran bo Odar");
+            incluirEpisodioPovoar(new Episodio(14, "An Endless Cycle", 3, LocalDate.of(2020, 6, 27), 55.0F, 9, diretores));
+
+            diretores.clear();
+            diretores.add("Baran bo Odar");
+            incluirEpisodioPovoar(new Episodio(14, "The Origin", 3, LocalDate.of(2020, 6, 27), 72.0F, 10, diretores));
+
+            diretores.clear();
+            diretores.add("Baran bo Odar");
+            incluirEpisodioPovoar(new Episodio(14, "Light and Shadow", 1, LocalDate.of(2017, 12, 1), 49.0F, 9, diretores));
         } catch (Exception e){
             System.err.println("\n[ERRO]: " + e.getMessage());
         }

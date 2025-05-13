@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
-import controle.ControleSerie;
-import controle.ControleEpisodio;
+import controle.*;
 import visao.VisaoSerie;
 import visao.VisaoAtor;
 import visao.VisaoEpisodio;
@@ -53,9 +52,19 @@ public class Principal {
             // Povoar as Séries antes
             ControleSerie controleSerie = new ControleSerie();
             controleSerie.povoar();
+
             // Povoar os Episódios depois
             ControleEpisodio controleEpisodio = new ControleEpisodio(controleSerie.buscarSerie(4));
             controleEpisodio.povoar();
+
+            // Povoar os Atores
+            ControleAtor controleAtor = new ControleAtor();
+            controleAtor.povoar();
+
+            // Povoar as Atuações
+            ControleAtuacao controleAtuacao = new ControleAtuacao();
+            controleAtuacao.povoar();
+
         } catch (Exception e) {
             System.err.println("\n[ERRO]: " + e.getMessage());
         }

@@ -237,6 +237,13 @@ public class ControleAtuacao {
     public void povoar(){
         // Inicar bloco try-catch
         try {
+            // Breaking Bad
+            incluirAtuacao(new Atuacao(1,2, "Walter White"));
+            incluirAtuacao(new Atuacao(2,2, "Jeese Pinkman"));
+            incluirAtuacao(new Atuacao(3,2, "Skyler White"));
+            incluirAtuacao(new Atuacao(4,2, "Hank Schrader"));
+            incluirAtuacao(new Atuacao(5,2, "Marie Schrader"));
+
             
             System.out.println("\nAtuaçãos povoados!");
 

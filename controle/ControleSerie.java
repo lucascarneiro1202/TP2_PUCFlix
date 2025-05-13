@@ -220,6 +220,87 @@ public class ControleSerie {
             "HBO MAX", 8, criadores, 
             "Gangster"));
 
+            // Netflix Originals
+            criadores.add("Matt Duffer");
+            criadores.add("Ross Duffer");
+            incluirSerie(new Serie("Stranger Things", 2016, 
+            "Quando um garoto desaparece, uma pequena cidade descobre um mistério envolvendo experimentos secretos, forças sobrenaturais e uma garota estranha.",
+            "Netflix", 9, criadores, 
+            "Sci-Fi Horror"));
+
+            criadores.clear();
+            criadores.add("Phoebe Waller-Bridge");
+            incluirSerie(new Serie("Fleabag", 2016, 
+            "Uma mulher jovem, livre, mas confusa, tenta lidar com a vida em Londres enquanto lembra de sua melhor amiga que morreu.",
+            "Amazon Prime", 8, criadores, 
+            "Comedy Drama"));
+
+            criadores.clear();
+            criadores.add("David Benioff");
+            criadores.add("D.B. Weiss");
+            incluirSerie(new Serie("Game of Thrones", 2011, 
+            "Nove famílias nobres lutam pelo controle das terras de Westeros, enquanto um antigo inimigo retorna após milênios dormindo.",
+            "HBO MAX", 9, criadores, 
+            "Fantasy Drama"));
+
+            criadores.clear();
+            criadores.add("Greg Daniels");
+            incluirSerie(new Serie("The Office (US)", 2005, 
+            "Uma equipe disfuncional de escritório da Dunder Mifflin Paper Company, onde o comportamento do chefe excêntrico é a principal fonte de entretenimento.",
+            "Netflix", 8, criadores, 
+            "Mockumentary Comedy"));
+
+            criadores.clear();
+            criadores.add("Shonda Rhimes");
+            incluirSerie(new Serie("Grey's Anatomy", 2005, 
+            "Segue a vida pessoal e profissional de um grupo de médicos no Grey Sloan Memorial Hospital em Seattle.",
+            "Disney+", 7, criadores, 
+            "Medical Drama"));
+
+            // Anime Series
+            criadores.clear();
+            criadores.add("Hajime Isayama");
+            incluirSerie(new Serie("Attack on Titan", 2013, 
+            "Em um mundo onde a humanidade vive dentro de cidades cercadas por enormes muralhas que os protegem de titãs gigantescos.",
+            "Crunchyroll", 9, criadores, 
+            "Anime Action"));
+
+            // British Classics
+            criadores.clear();
+            criadores.add("Steven Moffat");
+            criadores.add("Mark Gatiss");
+            incluirSerie(new Serie("Sherlock", 2010, 
+            "Uma atualização moderna das famosas aventuras de Sir Arthur Conan Doyle, com Sherlock Holmes e Dr. Watson no século 21.",
+            "BBC", 9, criadores, 
+            "Crime Drama"));
+
+            // Recent Hits
+            criadores.clear();
+            criadores.add("Jantje Friese");
+            criadores.add("Baran bo Odar");
+            incluirSerie(new Serie("Dark", 2017, 
+            "Uma criança desaparecida faz com que quatro famílias se ajudem a procurar respostas enquanto descobrem um mistério que abrange três gerações.",
+            "Netflix", 8, criadores, 
+            "Sci-Fi Thriller"));
+
+            // Sitcoms
+            criadores.clear();
+            criadores.add("Chuck Lorre");
+            criadores.add("Bill Prady");
+            incluirSerie(new Serie("The Big Bang Theory", 2007, 
+            "Uma mulher que se muda para o apartamento ao lado de dois físicos brilhantes, mas socialmente desajeitados, mostra a eles como pouco sabem sobre a vida fora do laboratório.",
+            "HBO MAX", 7, criadores, 
+            "Sitcom"));
+
+            // Fantasy
+            criadores.clear();
+            criadores.add("Henry Cavill");
+            criadores.add("Lauren Schmidt Hissrich");
+            incluirSerie(new Serie("The Witcher", 2019, 
+            "Geralt de Rívia, um caçador de monstros mutante, viaja em busca de seu destino em um mundo turbulento onde as pessoas muitas vezes são mais perversas que as bestas.",
+            "Netflix", 8, criadores, 
+            "Fantasy Adventure"));
+
             System.out.println("\nSéries povoadas!\n");
 
         } catch (Exception e){

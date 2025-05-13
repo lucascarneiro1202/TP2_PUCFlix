@@ -2,11 +2,17 @@ package visao;
 
 import entidades.Ator;
 import entidades.Atuacao;
+import entidades.Episodio;
+import entidades.Serie;
 import controle.ControleAtor;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class VisaoAtor {
 
@@ -124,35 +130,83 @@ public class VisaoAtor {
      * @return Ator criado
      */
     public Ator lerAtor() throws Exception {
+        // Definir os atributos de um Episódio
         String nome, nacionalidade;
-        char genero;
-        LocalDate dataNascimento;
+        char genero = ' ';
+        LocalDate dataLancamento = null;
 
-        // Entrada do nome
-        System.out.print("Qual o nome do ator? (mínimo 3 caracteres): ");
-        nome = console.nextLine();
-        if (nome.length() < 3) throw new Exception("Nome muito curto!");
+        // Definir variáveis auxiliares
+        boolean dadosCorretos = false;
+        String regex = "^\\d{2}/\\d{2}/\\d{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        String aux;
 
-        // Entrada do gênero
-        System.out.print("Qual o gênero (M/F/I)? ");
-        genero = console.nextLine().toUpperCase().charAt(0);
-        if ("MFI".indexOf(genero) == -1) throw new Exception("Gênero inválido!");
+        // Ler o nome do Ator
+        do {
+            // Ler o nome do Episódio do console
+            System.out.print("Qual o nome do ator? (mínimo 3 caracteres):");
+            nome = console.nextLine();
 
-        // Entrada da data de nascimento
-        System.out.print("Qual a data de nascimento (yyyy-mm-dd)? ");
-        dataNascimento = LocalDate.parse(console.nextLine());
+            // Testar se a entrada é válida
+            if (nome.length() >= 3)
+                dadosCorretos = true;
+            else
+                System.err.println("[ERRO]: O nome deve ter no mínimo 3 caracteres!");
+        } while (!dadosCorretos);
 
-        // Entrada da nacionalidade
-        System.out.print("Qual a nacionalidade? ");
-        nacionalidade = console.nextLine();
+        dadosCorretos = false;
+        do {
+            System.out.print("Qual o gênero (M/F/I)? ");
+            aux = console.nextLine();
+            if (aux.length() > 0){
+                genero = aux.toUpperCase().charAt(0);
+                dadosCorretos = ("MFI".indexOf(genero) == -1) ? false : true;
+                if (!dadosCorretos) System.err.println("[ERRO]: O gênero deve ser M/F/I");
+            } else {
+                dadosCorretos = false;
+                System.err.println("[ERRO]: Insira algum valor");
+            }
+        } while (!dadosCorretos);
 
-        // Confirmação
-        System.out.print("\nConfirmar dados? (S/N) ");
-        char confirm = console.nextLine().charAt(0);
-        if (confirm == 'S' || confirm == 's')
-            return new Ator(nome, genero, dataNascimento, nacionalidade);
-        else
-            throw new Exception("Inclusão cancelada.");
+
+        // Reiniciar variável de controle
+        dadosCorretos = false;
+        // Ler a data de nascimento
+        do {
+            System.out.print("Qual a data de nascimento (dd/MM/yyyy)? ");
+            String data = console.nextLine();
+            Matcher matcher = pattern.matcher(data);
+
+            // Testar se a data está no formato correto
+            if (matcher.matches()) {
+                dadosCorretos = true;
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                dataLancamento = LocalDate.parse(data, formatter);
+            } else {
+                dadosCorretos = false;
+                System.err.println("[ERRO]: O formato deve ser (dd/MM/yyyy)!");
+            }
+        } while (!dadosCorretos);
+        
+        
+        
+        dadosCorretos = false;
+        // Ler a nacionalidade
+        do {
+            System.out.print("Qual a nacionalidade? (mínimo 2 caracteres):");
+            nacionalidade = console.nextLine();
+
+            // Testar se a entrada é válida
+            if (nacionalidade.length() >= 2)
+                dadosCorretos = true;
+            else{
+                System.err.println("[ERRO]: A nacionalidade deve ter no mínimo 2 caracteres!");
+                dadosCorretos = false;
+            }
+        } while (!dadosCorretos);
+
+        Ator a = new Ator(nome, genero, dataLancamento, nacionalidade);
+        return a;
     }
 
     /*
@@ -163,23 +217,97 @@ public class VisaoAtor {
     public Ator lerAtor(Ator antigo) throws Exception {
         String nome, nacionalidade;
         char genero;
-        LocalDate dataNascimento;
+        LocalDate dataNascimento = null;
 
-        System.out.print("Nome (" + antigo.getNome() + "): ");
-        nome = console.nextLine();
-        if (nome.isEmpty()) nome = antigo.getNome();
+        // Definir variáveis auxiliares
+        boolean dadosCorretos = false;
+        String regex = "^\\d{2}/\\d{2}/\\d{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        String aux;
 
-        System.out.print("Gênero (M/F/I) (" + antigo.getGenero() + "): ");
-        String g = console.nextLine();
-        genero = g.isEmpty() ? antigo.getGenero() : g.toUpperCase().charAt(0);
+        System.err.println("Caso deseja manter a informção antiga pressione ENTER em cada campo!!!");
 
-        System.out.print("Data de nascimento (" + antigo.getDataNascimento() + "): ");
-        String dn = console.nextLine();
-        dataNascimento = dn.isEmpty() ? antigo.getDataNascimento() : LocalDate.parse(dn);
 
-        System.out.print("Nacionalidade (" + antigo.getNacionalidade() + "): ");
-        nacionalidade = console.nextLine();
-        if (nacionalidade.isEmpty()) nacionalidade = antigo.getNacionalidade();
+        do {
+            System.out.print("Qual o nome do Ator (Original: "+antigo.getNome()+") ? ");
+            nome = console.nextLine();
+
+            // Testar se é para manter os dados antigos
+            if (nome.length() == 0) {
+                nome = antigo.getNome();
+                dadosCorretos = true;
+            }
+
+            // Testar se a entrada é válida
+            if (nome.length() >= 2)
+                dadosCorretos = true;
+            else
+                System.err.println("[ERRO]: O nome deve ter no mínimo 2 caracteres!");
+        } while (!dadosCorretos);
+
+        do {
+            System.out.print("Qual o gênero do Ator (Original: "+antigo.getGenero()+") ? ");
+            aux = console.nextLine();
+            
+            // Testar se é para manter os dados antigos
+            if (aux.length() == 0) {
+                genero = antigo.getGenero();
+                dadosCorretos = true;
+            } else {
+                genero = aux.toUpperCase().charAt(0);
+
+                // Testar se a entrada é válida
+                if (!("MFI".indexOf(genero) == -1))
+                    dadosCorretos = true;
+                else{
+                    System.err.println("[ERRO]: O gênero deve ser M/F/I");
+                    dadosCorretos = false;
+                }
+            }
+
+        } while (!dadosCorretos);
+
+        // Reiniciar variável de controle
+        dadosCorretos = false;
+        // Ler a data de lançamento do Episódio
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        do {
+            System.out.print("Qual a data de nascimento (Original: "+antigo.getDataNascimento().format(formatter)+")? ");
+            String data = console.nextLine();
+            Matcher matcher = pattern.matcher(data);
+
+            // Testar se é para manter os dados antigos
+            if (data.length() == 0) {
+                dataNascimento = antigo.getDataNascimento();
+                dadosCorretos = true;
+            } else {
+                // Testar se a data está no formado correto
+                if (matcher.matches()) {
+                    dadosCorretos = true;
+                    dataNascimento = LocalDate.parse(data, formatter);
+                } else
+                    System.err.println("[ERRO]: O formato deve ser (dd/MM/yyyy)!");
+            }
+        } while (!dadosCorretos);
+
+        do {
+            System.out.print("Qual a nacionalidade do Ator (Original: "+antigo.getNacionalidade()+") ? ");
+            nacionalidade = console.nextLine();
+
+            // Testar se é para manter os dados antigos
+            if (nacionalidade.length() == 0) {
+                nacionalidade = antigo.getNacionalidade();
+                dadosCorretos = true;
+            }
+
+            // Testar se a entrada é válida
+            if (nacionalidade.length() >= 2)
+                dadosCorretos = true;
+            else
+                System.err.println("[ERRO]: A nacionalidade deve ter no mínimo 2 caracteres!");
+        } while (!dadosCorretos);
+
 
         return new Ator(antigo.getID(), nome, genero, dataNascimento, nacionalidade);
     }
@@ -188,22 +316,42 @@ public class VisaoAtor {
      * buscarUmAtor - Busca um único ator pelo nome
      * @return Ator selecionado
      */
-    public Ator buscarUmAtor() throws Exception {
+    public Ator buscarUmAtor() {
+        Ator a = null;
+        Boolean dadosCorretos = false;
+        int idx;
+
         List<Ator> atores = buscarAtorNome();
         if (atores == null || atores.isEmpty())
-            throw new Exception("Nenhum ator encontrado!");
+            System.err.println("[ERRO]: Nenhum ator encontrado!");
 
         if (atores.size() == 1)
             return atores.get(0);
 
-        // Exibe opções para o usuário escolher
-        for (int i = 0; i < atores.size(); i++) {
-            System.out.println("(" + i + ") " + atores.get(i).getNome());
-        }
+        do {
+            // Exibir todas as Séries encontradas pelo nome
+            System.out.println("Escolha um Ator: ");    
+            int n = 0;    
+            for (Ator at : atores) 
+                System.out.println((n++) + " - " + at.getNome());    
+            // Tentar ler a opção do console
+            try {
+                idx = Integer.valueOf(console.nextLine());
+            } catch(NumberFormatException e) {
+                idx = -1;
+            }    
+            // Testar a opção
+            if (0 <= idx && idx <= atores.size()) {
+                // Identificar a Série selecionada pela sua posição
+                a = atores.get(idx);    
+                // Atualizar variável de controle
+                dadosCorretos = true;
+            } else {
+                System.err.println("[ERRO]: Ator não está presente na lista!\n");
+            }
+        } while(!dadosCorretos); 
 
-        System.out.print("\nEscolha um número: ");
-        int idx = Integer.parseInt(console.nextLine());
-        return atores.get(idx);
+        return a;
     }
 
     /*
@@ -231,7 +379,7 @@ public class VisaoAtor {
 
             System.out.println("\nAtuações de " + a.getNome() + ":");
             for (Atuacao at : atuacoes) {
-                System.out.println(at);
+                (new VisaoAtuacao()).mostraAtuacao(at);
             }
         } catch (Exception e) {
             System.err.println("\n[ERRO]: " + e.getMessage());

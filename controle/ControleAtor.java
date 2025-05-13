@@ -11,28 +11,12 @@ import java.util.Arrays;
 
 public class ControleAtor {
     private ArquivoAtor arqAtor;
-    private Ator ator;
 
     /*
      * Construtor da classe ControleAtor sem a vinculação de Ator específico
      */
     public ControleAtor() throws Exception {
         this.arqAtor = new ArquivoAtor();
-    }
-
-    /*
-     * Construtor da classe ControleAtor com a vinculação de Ator
-     * @param ator - Ator referente à classe atual
-     */
-    public ControleAtor(Ator ator) throws Exception {
-        if (ator == null)
-            throw new Exception("Ator nulo!");
-
-        if (!validarAtor(ator.getID()))
-            throw new Exception("Ator inválido!");
-
-        this.arqAtor = new ArquivoAtor();
-        this.ator = ator;
     }
 
     /*
@@ -52,6 +36,8 @@ public class ControleAtor {
      * @return boolean - true se bem sucedido, false caso contrário
      */
     public boolean excluirAtor(int id) throws Exception {
+        if (ControleAtuacao.verificarAtuacaoAtor(id)) 
+            throw new Exception ("Há atuações vinculados com esse Ator!");
         return arqAtor.delete(id);
     }
 
@@ -63,6 +49,9 @@ public class ControleAtor {
     public boolean excluirAtor(Ator a) throws Exception {
         if (a == null)
             throw new Exception("Ator nulo!");
+        if (ControleAtuacao.verificarAtuacaoAtor(a.getID())) 
+            throw new Exception ("Há atuações vinculados com esse Ator!");
+        
         return arqAtor.delete(a.getID());
     }
 
@@ -138,13 +127,46 @@ public class ControleAtor {
     }
 
     /*
-     * povoar - Insere atores fictícios para testes
+     * povoar - Insere atores fictícios para testes (Dados gerados pelo Deepseek)
      */
     public void povoar() {
         try {
+            // Breaking Bad cast
             incluirAtor(new Ator("Bryan Cranston", 'M', java.time.LocalDate.of(1956, 3, 7), "EUA"));
             incluirAtor(new Ator("Aaron Paul", 'M', java.time.LocalDate.of(1979, 8, 27), "EUA"));
             incluirAtor(new Ator("Anna Gunn", 'F', java.time.LocalDate.of(1968, 8, 11), "EUA"));
+            incluirAtor(new Ator("Dean Norris", 'M', java.time.LocalDate.of(1963, 4, 8), "EUA"));
+            incluirAtor(new Ator("Betsy Brandt", 'F', java.time.LocalDate.of(1973, 3, 14), "EUA"));
+
+            // Game of Thrones cast
+            incluirAtor(new Ator("Emilia Clarke", 'F', java.time.LocalDate.of(1986, 10, 23), "UK"));
+            incluirAtor(new Ator("Kit Harington", 'M', java.time.LocalDate.of(1986, 12, 26), "UK"));
+            incluirAtor(new Ator("Peter Dinklage", 'M', java.time.LocalDate.of(1969, 6, 11), "EUA"));
+            incluirAtor(new Ator("Lena Headey", 'F', java.time.LocalDate.of(1973, 10, 3), "UK"));
+            incluirAtor(new Ator("Sophie Turner", 'F', java.time.LocalDate.of(1996, 2, 21), "UK"));
+
+            // Friends cast
+            incluirAtor(new Ator("Jennifer Aniston", 'F', java.time.LocalDate.of(1969, 2, 11), "EUA"));
+            incluirAtor(new Ator("Courteney Cox", 'F', java.time.LocalDate.of(1964, 6, 15), "EUA"));
+            incluirAtor(new Ator("Lisa Kudrow", 'F', java.time.LocalDate.of(1963, 7, 30), "EUA"));
+            incluirAtor(new Ator("Matt LeBlanc", 'M', java.time.LocalDate.of(1967, 7, 25), "EUA"));
+            incluirAtor(new Ator("Matthew Perry", 'M', java.time.LocalDate.of(1969, 8, 19), "Canada"));
+            incluirAtor(new Ator("David Schwimmer", 'M', java.time.LocalDate.of(1966, 11, 2), "EUA"));
+
+            // International actors
+            incluirAtor(new Ator("Gong Li", 'F', java.time.LocalDate.of(1965, 12, 31), "China"));
+            incluirAtor(new Ator("Shah Rukh Khan", 'M', java.time.LocalDate.of(1965, 11, 2), "India"));
+            incluirAtor(new Ator("Penélope Cruz", 'F', java.time.LocalDate.of(1974, 4, 28), "Spain"));
+            incluirAtor(new Ator("Wagner Moura", 'M', java.time.LocalDate.of(1976, 6, 27), "Brazil"));
+            incluirAtor(new Ator("Lupita Nyong'o", 'F', java.time.LocalDate.of(1983, 3, 1), "Mexico"));
+
+            // Hollywood legends
+            incluirAtor(new Ator("Meryl Streep", 'F', java.time.LocalDate.of(1949, 6, 22), "EUA"));
+            incluirAtor(new Ator("Denzel Washington", 'M', java.time.LocalDate.of(1954, 12, 28), "EUA"));
+            incluirAtor(new Ator("Cate Blanchett", 'F', java.time.LocalDate.of(1969, 5, 14), "Australia"));
+            incluirAtor(new Ator("Tom Hanks", 'M', java.time.LocalDate.of(1956, 7, 9), "EUA"));
+            incluirAtor(new Ator("Viola Davis", 'F', java.time.LocalDate.of(1965, 8, 11), "EUA"));
+            
             System.out.println("\nAtores povoados com sucesso!");
         } catch (Exception e) {
             System.err.println("\n[ERRO]: " + e.getMessage());

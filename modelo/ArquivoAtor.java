@@ -93,9 +93,6 @@ public class ArquivoAtor extends Arquivo<Ator> {
      * readNome - Retorna todos os Atores cujo nome começa com determinada string
      */
     public Ator[] readNome(String nome) throws Exception {
-        if (nome.length() == 0)
-            throw new Exception("Nome inválido!");
-
         ParNomeID pnid = new ParNomeID(nome, -1);
         ArrayList<ParNomeID> pnis = indiceNome.read(pnid);
 
