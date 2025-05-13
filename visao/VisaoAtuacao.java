@@ -2,7 +2,6 @@ package visao;
 
 import entidades.Ator;
 import entidades.Atuacao;
-import entidades.Episodio;
 import entidades.Serie;
 import controle.ControleAtor;
 import controle.ControleAtuacao;
@@ -47,7 +46,7 @@ public class VisaoAtuacao {
             System.out.println("2 - Excluir Atuação");
             System.out.println("3 - Alterar Atuação");
             System.out.println("4 - Buscar Atuação");
-            System.out.println("5 - Buscar Atuações de uma série");
+            System.out.println("5 - Buscar Atuações de Uma Série");
             System.out.println("0 - Sair");
             // Ler opção do usuário
             System.out.print("\nOpção: ");
@@ -74,7 +73,7 @@ public class VisaoAtuacao {
      */
     public void incluirAtuacao() {
         // Exibir título da ação
-        System.out.println("\n> Inclusão de Atuacao\n");
+        System.out.println("\n> Inclusão de Atuacao\n\n");
         // Ler dados da Atuação a ser incluída
         Atuacao a;
         try {
@@ -99,42 +98,6 @@ public class VisaoAtuacao {
             System.err.println("\n[ERRO]: " + e1.getMessage());
         }
     }
-
-    /*
-     * alterarAtuacao - Função para ler novas informações de uma Atuação e alterá-la
-     */
-    public void alterarAtuacao() {
-        System.out.println("\nAlteração de Atuacao");
-        try {
-            // Tenta ler o Atuacao com o ID fornecido
-            Atuacao s = buscarUmaAtuacao();
-            if (s != null) {
-                System.out.println("\n> Insira os novos dados da Atuação (caso deseje manter os dados originais, apenas tecle Enter): \n");
-                Atuacao nova = lerAtuacao(s);
-                nova.setID(s.getID());
-
-                // Confirmação da alteração
-                System.out.print("\nConfirma as alterações? (S/N) ");
-                char resp = console.next().charAt(0);
-                if (resp == 'S' || resp == 's') {
-                    // Salva as alterações no arquivo
-                    boolean alterado = controleAtuacao.alterarAtuacao(nova);
-                    if (alterado) {
-                        System.out.println("\nAtuação alterada com sucesso!");
-                    } else {
-                        System.err.println("\n[ERRO]: Não foi possível alterar a Atuação!");
-                    }
-                } else {
-                    System.out.println("Alterações canceladas!");
-                }
-                 console.nextLine(); // Limpar o buffer 
-            }
-        } catch (Exception e) {
-            System.out.println("[ERRO]: " + e.getMessage());
-        }
-        
-    }
-
 
     /*
      * excluirAtuacao - Função para buscar uma Atuação e excluí-la
@@ -172,6 +135,41 @@ public class VisaoAtuacao {
             System.out.println("\n[ERRO]: " + e.getMessage());
         }
     }
+
+    /*
+     * alterarAtuacao - Função para ler novas informações de uma Atuação e alterá-la
+     */
+    public void alterarAtuacao() {
+        System.out.println("\nAlteração de Atuacao");
+        try {
+            // Tenta ler o Atuacao com o ID fornecido
+            Atuacao s = buscarUmaAtuacao();
+            if (s != null) {
+                System.out.println("\n> Insira os novos dados da Atuação (caso deseje manter os dados originais, apenas tecle Enter): \n");
+                Atuacao nova = lerAtuacao(s);
+                nova.setID(s.getID());
+
+                // Confirmação da alteração
+                System.out.print("\nConfirma as alterações? (S/N) ");
+                char resp = console.next().charAt(0);
+                if (resp == 'S' || resp == 's') {
+                    // Salva as alterações no arquivo
+                    boolean alterado = controleAtuacao.alterarAtuacao(nova);
+                    if (alterado) {
+                        System.out.println("\nAtuação alterada com sucesso!");
+                    } else {
+                        System.err.println("\n[ERRO]: Não foi possível alterar a Atuação!");
+                    }
+                } else {
+                    System.out.println("Alterações canceladas!");
+                }
+                 console.nextLine(); // Limpar o buffer 
+            }
+        } catch (Exception e) {
+            System.out.println("[ERRO]: " + e.getMessage());
+        }
+        
+    }
     
     /*
      * lerAtuacao - Função para efetivamente obter as informações de uma Atuação do usuário
@@ -188,7 +186,7 @@ public class VisaoAtuacao {
         // Iniciar bloco de seleção
         do {
             // Vincular a série
-            System.out.print("Qual a série? ");
+            System.out.println("Qual a série? ");
             s = visaoSerie.buscarUmaSerie();
             // Testar se a entrada é válida
             if (s.getID() >= 0)
@@ -199,6 +197,9 @@ public class VisaoAtuacao {
 
         // Reiniciar variável de controle
         dadosCorretos = false;
+
+        // Mostrar cabeçalho
+        System.out.println("\n> Leitura de dados da Atuação\n");
         do {
             // Vincular o Ator
             System.out.print("Qual o Ator? ");

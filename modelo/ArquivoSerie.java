@@ -10,7 +10,6 @@ import java.util.List;
 import aeds3.*;
 
 public class ArquivoSerie extends Arquivo<Serie> {
-    Arquivo<Serie> arqSerie;
     ArvoreBMais<ParIDID> indiceSerieEpisodio;
     ArvoreBMais<ParNomeID> indiceNome;
 

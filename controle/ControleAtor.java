@@ -60,22 +60,23 @@ public class ControleAtor {
      * @param novo - Objeto Ator alterado
      * @return boolean - true se bem sucedido
      */
-    public boolean alterarAtor(Ator novo) throws Exception {
-        if (novo == null)
+    public boolean alterarAtor(Ator novoAtor) throws Exception {
+        if (novoAtor == null)
             throw new Exception("Ator nulo!");
-        return arqAtor.update(novo);
+        return arqAtor.update(novoAtor);
     }
 
     /*
-    * buscarAtor - Retorna todos os Atores cadastrados
-    * @return Lista de todos os Atores
-    */
-    public List<Ator> buscarAtor() throws Exception {
-        // Faz uma leitura com prefixo vazio que retorna todos do índice
-        Ator[] resultado = arqAtor.readNome("");
-        return new ArrayList<>(Arrays.asList(resultado));
+     * buscarAtor - Retorna ator por ID, se for igual ao da instância
+     * @param id - ID a ser buscado
+     * @return Ator encontrado
+     */
+    public Ator buscarAtor(int id) throws Exception {
+        Ator a = arqAtor.read(id);
+        if (a == null)
+        throw new Exception("Ator não encontrado!");
+        return a;
     }
-
 
     /*
      * buscarAtor - Retorna lista de Atores cujo nome começa com a string fornecida
@@ -88,15 +89,13 @@ public class ControleAtor {
     }
 
     /*
-     * buscarAtor - Retorna ator por ID, se for igual ao da instância
-     * @param id - ID a ser buscado
-     * @return Ator encontrado
-     */
-    public Ator buscarAtor(int id) throws Exception {
-        Ator a = arqAtor.read(id);
-        if (a == null)
-            throw new Exception("Ator não encontrado!");
-        return a;
+    * buscarAtor - Retorna todos os Atores cadastrados
+    * @return Lista de todos os Atores
+    */
+    public List<Ator> buscarAtor() throws Exception {
+        // Faz uma leitura com prefixo vazio que retorna todos do índice
+        Ator[] resultado = arqAtor.readNome("");
+        return new ArrayList<>(Arrays.asList(resultado));
     }
 
     /*

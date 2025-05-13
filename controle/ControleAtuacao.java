@@ -16,7 +16,6 @@ public class ControleAtuacao {
     public ControleAtuacao() throws Exception{
         this.arqAtuacao = new ArquivoAtuacao();
     }
-    
 
     /*
      * incluirAtuacao - Função para adicionar uma Atuação ao Banco de Dados
@@ -49,7 +48,7 @@ public class ControleAtuacao {
             throw new Exception ("Há atores vinculados com essa atuação!"); 
 
         // Verificar se tem Series vinculados com a atuação
-        if (verificarAtuacaosSerie(a.getIDSerie()))
+        if (verificarAtuacaoSerie(a.getIDSerie()))
             throw new Exception ("Há séries vinculados com essa atuação!"); 
 
         // Excluir o Atuação a partir do ArquivoAtuação a retornar o seu status
@@ -71,7 +70,7 @@ public class ControleAtuacao {
             throw new Exception ("Há atores vinculados com essa atuação!"); 
 
         // Verificar se tem Series vinculados com a atuação
-        if (verificarAtuacaosSerie(a.getIDSerie()))
+        if (verificarAtuacaoSerie(a.getIDSerie()))
             throw new Exception ("Há séries vinculados com essa atuação!"); 
 
         // Excluir o Atuação a partir do ArquivoAtuacao a retornar o seu status
@@ -101,26 +100,24 @@ public class ControleAtuacao {
         return resposta;
     }
 
-
     /*
      * alterarAtuacao - Função para alterar uma Atuação
-     * @param a - Objeto já alterado a ser inserido no Banco de Dados
+     * @param novaAtuacao - Objeto já alterado a ser inserido no Banco de Dados
      * @return boolean - True se bem sucedido, False caso contrário
      */
-    public boolean alterarAtuacao(Atuacao a) throws Exception {
+    public boolean alterarAtuacao(Atuacao novaAtuacao) throws Exception {
         // Testar se o objeto Atuação é válido
-        if (a == null) 
+        if (novaAtuacao == null) 
             throw new Exception ("Atuação nula!");
 
         // Atualizar o Atuação a partir do ArquivoAtuacao a retornar o seu status
-        return arqAtuacao.update(a);
+        return arqAtuacao.update(novaAtuacao);
     }
-
 
     /*
      * buscarAtuacao - Função para buscar uma Atuação a partir do seu ID
-     * @param id - ID do Atuação a ser buscado
-     * @return a - Objeto do Atuação buscado
+     * @param id - ID do Atuação a ser buscado 
+     * @return a - Objeto do Atuação buscado 
      */
     public Atuacao buscarAtuacao(int id) throws Exception {
         // Ler o Atuação a partir do ArquivoAtuacao usando seu id
@@ -152,9 +149,9 @@ public class ControleAtuacao {
      * @param IDAtor - ID de Ator que será pesquisado 
      * @return atuacoes - Lista dos Atuações que pertencem ao Ator
      */
-    public List<Atuacao> buscarAtuacaoAtor(int IDAtor) throws Exception {
+    public List<Atuacao> buscarAtuacaoAtor(int idAtor) throws Exception {
         // Definir lista de Atuaçãos
-        List<Atuacao> atuacoes = arqAtuacao.readAtor(IDAtor);
+        List<Atuacao> atuacoes = arqAtuacao.readAtor(idAtor);
 
         // Retornar lista de Atuaçãos válidos
         return atuacoes;
@@ -165,22 +162,20 @@ public class ControleAtuacao {
      * @param IDSerie- ID de Serie que será pesquisado 
      * @return atuacoes - Lista dos Atuações que pertencem à série
      */
-    public List<Atuacao> buscarAtuacaoSerie(int IDSerie) throws Exception {
+    public List<Atuacao> buscarAtuacaoSerie(int idSerie) throws Exception {
         // Definir lista de Atuaçãos
-        List<Atuacao> atuacoes = arqAtuacao.readSerie(IDSerie);
+        List<Atuacao> atuacoes = arqAtuacao.readSerie(idSerie);
 
         // Retornar lista de Atuaçãos válidos
         return atuacoes;
     }
 
-
     /*
-     * verificarAtuacaosSerie - Função estática que, com um ID de Série, retorna verdadeiro ou 
-     *                          falso se tiver uma ou mais Séries atreladas a essa Atuação.
-     * @param IDSerie - ID da Série a ser testada
-     * @return resposta - True se existir algum Atuação da Série atual, False caso contrário
+     * verificarAtuacaoAtor - Função estática que, com um ID de Ator, retorna verdadeiro ou falso se tiver um ou mais Atores atrelados a essa Atuação.
+     * @param idAtor - ID do Ator a ser testada
+     * @return resposta - True se existir algum Ator relacionado à atuação e vice-versa
      */
-    public static boolean verificarAtuacaosSerie(int IDSerie) {
+    public static boolean verificarAtuacaoAtor(int idAtor) {
         // Definir variável de resposta
         boolean resposta;
 
@@ -188,7 +183,35 @@ public class ControleAtuacao {
         try {
             // Definir instância do arquivoAtuacao
             ArquivoAtuacao arquivoAtuacao = new ArquivoAtuacao();
-            List<Atuacao> atuacoes = arquivoAtuacao.readSerie(IDSerie);
+            List<Atuacao> atuacoes = arquivoAtuacao.readAtor(idAtor);
+
+            // Testar se há alguma atuação no Ator encontrado
+            if (atuacoes.size() > 0)
+            resposta = true;
+            else
+            resposta = false;
+        } catch (Exception e) {
+            resposta = false;
+        }
+
+        // Retornar
+        return resposta;
+    }
+
+    /*
+     * verificarAtuacaoSerie - Função estática que, com um ID de Série, retorna verdadeiro ou falso se tiver uma ou mais Séries atreladas a essa Atuação.
+     * @param idSerie - ID da Série a ser testada
+     * @return resposta - True se existir algum Atuação da Série atual, False caso contrário
+     */
+    public static boolean verificarAtuacaoSerie(int idSerie) {
+        // Definir variável de resposta
+        boolean resposta;
+
+        // Iniciar bloco try-catch
+        try {
+            // Definir instância do arquivoAtuacao
+            ArquivoAtuacao arquivoAtuacao = new ArquivoAtuacao();
+            List<Atuacao> atuacoes = arquivoAtuacao.readSerie(idSerie);
     
             // Testar se há alguma atuação no Ator encontrado
             if (atuacoes.size() > 0)
@@ -196,34 +219,6 @@ public class ControleAtuacao {
             else
                 resposta = false;
         } catch (Exception a) {
-            resposta = false;
-        }
-
-        // Retornar
-        return resposta;
-    }
-    /*
-     * verificarAtuacaoAtor - Função estática que, com um ID de Ator, retorna verdadeiro ou 
-     *                        falso se tiver um ou mais Atores atrelados a essa Atuação.
-     * @param IDAtor - ID do Ator a ser testada
-     * @return resposta - True se existir algum Ator relacionado à atuação e vice-versa
-     */
-    public static boolean verificarAtuacaoAtor(int IDAtor) {
-        // Definir variável de resposta
-        boolean resposta;
-
-        // Iniciar bloco try-catch
-        try {
-        // Definir instância do arquivoAtuacao
-            ArquivoAtuacao arquivoAtuacao = new ArquivoAtuacao();
-            List<Atuacao> atuacoes = arquivoAtuacao.readAtor(IDAtor);
-
-        // Testar se há alguma atuação no Ator encontrado
-            if (atuacoes.size() > 0)
-                resposta = true;
-            else
-                resposta = false;
-        } catch (Exception e) {
             resposta = false;
         }
 

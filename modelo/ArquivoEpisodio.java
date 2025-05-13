@@ -1,7 +1,6 @@
 package modelo;
 
 import entidades.Episodio;
-import controle.ControleSerie;
 import aeds3.Arquivo;
 import aeds3.ArvoreBMais;
 
@@ -142,34 +141,4 @@ public class ArquivoEpisodio extends Arquivo<Episodio> {
         // Retornar
         return episodios;
     }
-
-    /*
-     * readIDSerie - Função para ler todos os Episódios vinculados a uma Série
-     * @param IDSerie - ID da Série dos episódios a serem procurados
-     * @return episodios - Lista de Episódios que pertencem à Série especificada
-     */
-    public Episodio[] readIDSerie(int IDSerie) throws Exception {
-        // Testar se o ID da Série procurada é válido
-        if( !ControleSerie.validarSerie(IDSerie) )
-            throw new Exception("IDSerie inválido");
-
-        // Definir Lista de Pares Série-Episódio que possuem o ID da Série especificada
-        List<ParIDID> piis = indiceSerieEpisodio.read(new ParIDID(IDSerie, -1));
-
-        // Testar se há algum Par encontrado
-        if ( !(piis.size() > 0) )
-            throw new Exception ("Não foi encontrado nenhum Episódio pertencente à Série procurada!");
-        
-        // Definir array de Episódios com o tamanho do número de pares
-        Episodio[] episodios = new Episodio[piis.size()];
-
-        // Iterar sobre a lista de Pares Série-Episódio a adicionar os Episódios correspondentes ao array de Episódios
-        int i = 0;
-        for(ParIDID pii: piis) 
-            episodios[i++] = this.read(pii.getID_Dependente());
-
-        // Retornar
-        return episodios;
-    }
-
 }

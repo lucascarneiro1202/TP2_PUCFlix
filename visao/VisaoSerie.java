@@ -2,7 +2,6 @@ package visao;
 
 import entidades.Serie;
 import entidades.Episodio;
-import controle.ControleAtuacao;
 import controle.ControleSerie;
 
 import java.util.ArrayList;
@@ -142,7 +141,7 @@ public class VisaoSerie {
             // Testar se a Série é válida
             if (s != null) {
                 // Confirmar a exclusão da Série
-                System.out.print("\nConfirma a exclusão do Serie? (S/N) ");
+                System.out.print("\nConfirma a exclusão da Serie? (S/N) ");
                 // Ler a resposta do usuário
                 char resp = console.nextLine().charAt(0);
                 // Testar a resposta do usuário
@@ -159,7 +158,7 @@ public class VisaoSerie {
                     System.out.println("\nExclusão cancelada!");
                 }
                 // Limpar o buffer
-                console.nextLine();
+                //console.nextLine();
             }
         } catch (Exception e) {
             System.out.println("\n[ERRO]: " + e.getMessage());
@@ -504,7 +503,7 @@ public class VisaoSerie {
             // Iniciar bloco de seleção
             do {
                 // Exibir todas as Séries encontradas pelo nome
-                System.out.println("Escolha uma Série: ");    
+                System.out.println("\nEscolha uma Série: ");    
                 int n = 0;    
                 for (Serie l : series) 
                     System.out.println((n++) + " - " + l.getNome());    

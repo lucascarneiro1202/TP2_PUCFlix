@@ -2,13 +2,10 @@ package visao;
 
 import entidades.Ator;
 import entidades.Atuacao;
-import entidades.Episodio;
-import entidades.Serie;
 import controle.ControleAtor;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -111,7 +108,7 @@ public class VisaoAtor {
             Ator a = buscarUmAtor();
 
             // Confirmação da exclusão
-            System.out.print("\nConfirma a exclusão? (S/N) ");
+            System.out.print("Confirma a exclusão? (S/N) ");
             char resp = console.nextLine().charAt(0);
             if (resp == 'S' || resp == 's') {
                 if (controleAtor.excluirAtor(a)) {
@@ -144,7 +141,7 @@ public class VisaoAtor {
         // Ler o nome do Ator
         do {
             // Ler o nome do Episódio do console
-            System.out.print("Qual o nome do ator? (mínimo 3 caracteres):");
+            System.out.print("\nQual o nome do ator? (mínimo 3 caracteres): ");
             nome = console.nextLine();
 
             // Testar se a entrada é válida
@@ -193,7 +190,7 @@ public class VisaoAtor {
         dadosCorretos = false;
         // Ler a nacionalidade
         do {
-            System.out.print("Qual a nacionalidade? (mínimo 2 caracteres):");
+            System.out.print("Qual a nacionalidade? (mínimo 2 caracteres): ");
             nacionalidade = console.nextLine();
 
             // Testar se a entrada é válida
@@ -229,7 +226,7 @@ public class VisaoAtor {
 
 
         do {
-            System.out.print("Qual o nome do Ator (Original: "+antigo.getNome()+") ? ");
+            System.out.print("Qual o nome do Ator (Original: "+antigo.getNome()+")? ");
             nome = console.nextLine();
 
             // Testar se é para manter os dados antigos
@@ -246,7 +243,7 @@ public class VisaoAtor {
         } while (!dadosCorretos);
 
         do {
-            System.out.print("Qual o gênero do Ator (Original: "+antigo.getGenero()+") ? ");
+            System.out.print("Qual o gênero do Ator (Original: "+antigo.getGenero()+")? ");
             aux = console.nextLine();
             
             // Testar se é para manter os dados antigos
@@ -260,7 +257,7 @@ public class VisaoAtor {
                 if (!("MFI".indexOf(genero) == -1))
                     dadosCorretos = true;
                 else{
-                    System.err.println("[ERRO]: O gênero deve ser M/F/I");
+                    System.err.println("[ERRO]: O gênero deve ser M/F/I!");
                     dadosCorretos = false;
                 }
             }
@@ -292,7 +289,7 @@ public class VisaoAtor {
         } while (!dadosCorretos);
 
         do {
-            System.out.print("Qual a nacionalidade do Ator (Original: "+antigo.getNacionalidade()+") ? ");
+            System.out.print("Qual a nacionalidade do Ator (Original: "+antigo.getNacionalidade()+")? ");
             nacionalidade = console.nextLine();
 
             // Testar se é para manter os dados antigos
@@ -360,7 +357,7 @@ public class VisaoAtor {
      * @return Lista de atores encontrados
      */
     public List<Ator> buscarAtorNome() {
-        System.out.print("Nome: ");
+        System.out.print("\nNome: ");
         String nome = console.nextLine();
         try {
             return controleAtor.buscarAtor(nome);

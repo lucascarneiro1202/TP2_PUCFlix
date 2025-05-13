@@ -6,19 +6,16 @@ Sobre o nosso grupo: [Membros!](#%EF%B8%8F-autores)
 
 # ‼️ Checklist
 
-
 + As operações de inclusão, busca, alteração e exclusão de atores estão implementadas e funcionando corretamente? ✅
 + O relacionamento entre séries e atores foi implementado com árvores B+ e funciona corretamente, assegurando a consistência entre as duas entidades? ✅
 + É possível consultar quais são os atores de uma série? ✅
 + É posssível consultar quais são as séries de um ator? ✅
-+ A remoção de séries remove os seus vínculos de atores?
++ A remoção de séries remove os seus vínculos de atores? ✅
 + A inclusão de um ator em uma série em um episódio se limita aos atores existentes? ✅
-+ A remoção de um ator checa se há alguma série vinculado a ele?
-+ O trabalho está funcionando corretamente?
-+ O trabalho está completo?
++ A remoção de um ator checa se há alguma série vinculado a ele?✅
++ O trabalho está funcionando corretamente? ✅
++ O trabalho está completo? ✅
 + O trabalho é original e não a cópia de um trabalho de outro grupo? ✅
-
-✅
 
 # 📦 Classes do sistema
 
@@ -47,9 +44,11 @@ Classe para criar a Entidade Serie. Implementa a interface EntidadeArquivo
 
 #### Funções
 
-+ Set e get de todos os atributos
-+ 3 Construtores = Um com parâmetros vazio, Um parâmetros para cada atributos e outro com parâmetros para cada atributo sem o id (colocando o valor como -1), no final, todas vão chamar o construtor com todos os atributos. Validar todas as informações no construtor completo, porém permitindo que construa com os valores “vazios”.
-+ String toString( ): Formato tabelado, com uma linha para cada atributo, com o nome “completo” e gramaticalmente correto. Para a formação da tabela, preencher com pontos (‘.’) até o atributo com maior nome. Começar cada linha com ‘| ’ e terminar com ‘ |’, preenchendo com espaços em branco para manter as | alinhadas. Além disso, no começo e no final da função, colocar a sequência de (“+---+”) englobando todos as informações. Ex.:
++ Set e Get de todos os atributos
++ Construtor com todos os atributos (Nesse método, deve haver a validação das entradas, permitindo valores vazios convencionados).
++ Construtor com todos os atributos, exceto o ID. Nesse caso, considerar o seu valor como -1.
++ Construtor com parâmetros vazios. ID = -1, String = "", Date = Data atual, Float = 0.0.
++ String toString(): Formato tabelado, com uma linha para cada atributo, com o nome “completo” e gramaticalmente correto. Para a formação da tabela, preencher com pontos (‘.’) até o atributo com maior nome. Começar cada linha com ‘| ’ e terminar com ‘ |’, preenchendo com espaços em branco para manter as | alinhadas. Além disso, no começo e no final da função, colocar a sequência de (“+---+”) englobando todos as informações. Ex.:
 ```
 +--------------------------+
 | ID...............: 1     |
@@ -59,8 +58,8 @@ Classe para criar a Entidade Serie. Implementa a interface EntidadeArquivo
 |            ...           |
 +--------------------------+
 ```
-+ byte [ ] toByteArray( ): Função para retornar um arranjo de bytes dado uma instância da classe, registrar os atributos na mesma ordem acima.
-+ void fromByteArray(byte[ ]): Função para preencher um objeto com dados vindo de um arranjo de bytes.
++ byte [] toByteArray(): Função para retornar um arranjo de bytes dado uma instância da classe, registrando os atributos na mesma ordem dos atributos.
++ void fromByteArray(byte[]): Função para preencher um objeto com dados vindos de um arranjo de bytes.
 
 ### Episodio
 
@@ -78,9 +77,11 @@ Classe para criar a Entidade Episódio. Implementa a interface EntidadeArquivo
 + diretores (ArrayList de String)
 
 #### Funções
-+ Set e get dos atributos
-+ 3 Construtores = Um com parâmetros vazio, Um parâmetros para cada atributos e outro com parâmetros para cada atributo sem o id (colocando o valor como -1). no final, todas vão chamar o construtor com todos os atributos. Validar todas as informações no construtor completo, porém permitindo que construa com os valores “vazios”. Para validar a IDSerie chamar a função ControleSerie.validarSerie( ) 
-+ String toString( ): Formato tabelado, com uma linha para cada atributo, com o nome “completo” e gramaticalmente correto. Para a formação da tabela, preencher com pontos (‘.’) até o atributo com maior nome. Começar cada linha com ‘| ’ e terminar com ‘ |’, preenchendo com espaços em branco para manter as | alinhadas. Além disso, no começo e no final da função, colocar a sequência de (“+---+”) englobando todos as informações. Ex.:
++ Set e Get de todos os atributos
++ Construtor com todos os atributos (Nesse método, deve haver a validação das entradas, permitindo valores vazios convencionados).
++ Construtor com todos os atributos, exceto o ID. Nesse caso, considerar o seu valor como -1.
++ Construtor com parâmetros vazios. ID = -1, String = "", Date = Data atual, Float = 0.0.
++ String toString(): Formato tabelado, com uma linha para cada atributo, com o nome “completo” e gramaticalmente correto. Para a formação da tabela, preencher com pontos (‘.’) até o atributo com maior nome. Começar cada linha com ‘| ’ e terminar com ‘ |’, preenchendo com espaços em branco para manter as | alinhadas. Além disso, no começo e no final da função, colocar a sequência de (“+---+”) englobando todos as informações. Ex.:
 ```
 +---------------------------------+
 | ID................: 1           |
@@ -90,8 +91,8 @@ Classe para criar a Entidade Episódio. Implementa a interface EntidadeArquivo
 |            ...                  |
 +---------------------------------+
 ```
-+ byte [ ] toByteArray( ): Função para retornar um arranjo de bytes dado uma instância da classe, registrar os atributos na mesma ordem acima.
-+ void fromByteArray(byte[ ]): Função para preencher um objeto com dados vindo de um arranjo de bytes.
++ byte [] toByteArray(): Função para retornar um arranjo de bytes dado uma instância da classe, registrando os atributos na mesma ordem dos atributos.
++ void fromByteArray(byte[]): Função para preencher um objeto com dados vindos de um arranjo de bytes.
 
 ### Ator
 
@@ -111,7 +112,7 @@ Classe para criar a Entidade Ator. Implementa a interface EntidadeArquivo
 + Contrutor com todos os parâmetros (Nesse método, deve haver a validação das entradas, permitindo valores vazios convencionados)
 + Construtor com todos os parâmetros, exceto o ID (Executa o construtor completo com ID = -1)
 + Construtor com todos os parâmetros vazios (Executa o construtor completo com os valores vazios convencionados: ID = -1, String = "", char = 'I' (indeterminado), LocalDate = data atual)
-+ String toString(): Formato tabelado, com uma linha para cada atributo. 
++ String toString(): Formato tabelado, com uma linha para cada atributo, com o nome “completo” e gramaticalmente correto. Para a formação da tabela, preencher com pontos (‘.’) até o atributo com maior nome. Começar cada linha com ‘| ’ e terminar com ‘ |’, preenchendo com espaços em branco para manter as | alinhadas. Além disso, no começo e no final da função, colocar a sequência de (“+---+”) englobando todos as informações. Ex.:
 ```
 +---------------------------+
 | ID................: 1     |
@@ -121,7 +122,7 @@ Classe para criar a Entidade Ator. Implementa a interface EntidadeArquivo
 |            ...            |
 +---------------------------+
 ```
-+ byte [] toByteArray( ): Função para retornar um arranjo de bytes dado uma instância da classe. Registrar os atributos na mesma ordem acima.
++ byte [] toByteArray(): Função para retornar um arranjo de bytes dado uma instância da classe, registrando os atributos na mesma ordem dos atributos.
 + void fromByteArray(byte[]): Função para preencher um objeto com dados vindos de um arranjo de bytes.
 
 ### Atuação
@@ -141,7 +142,7 @@ Classe para criar a Entidade Atuação. Implementa a interface EntidadeArquivo
 + Construtor com todos os parâmetros (Nesse método, deve haver a validação das entradas, permitindo valores vazios convencionados)
 + Construtor com todos os parâmetros, exceto o IDAtuacao (Executa o construtor completo com o IDAtuacao = -1)
 + Construtor com todos os parâmetros vazios (Executa o construtor vazio completo com os valores vazios convencionados: IDs = -1, String = "")
-+ String toString(): Formato tabelado, com uma linha para cada atributo.
++ String toString(): Formato tabelado, com uma linha para cada atributo, com o nome “completo” e gramaticalmente correto. Para a formação da tabela, preencher com pontos (‘.’) até o atributo com maior nome. Começar cada linha com ‘| ’ e terminar com ‘ |’, preenchendo com espaços em branco para manter as | alinhadas. Além disso, no começo e no final da função, colocar a sequência de (“+---+”) englobando todos as informações. Ex.:
 ```
 +-------------------+
 | IDAtuação.: 1     |
@@ -151,7 +152,7 @@ Classe para criar a Entidade Atuação. Implementa a interface EntidadeArquivo
 |        ...        |
 +-------------------+
 ```
-+ byte [] toByteArray(): Função para retornar um arranjo de bytes dado uma instância da classe. Registrar os atributos na mesma ordem acima.
++ byte [] toByteArray(): Função para retornar um arranjo de bytes dado uma instância da classe, registrando os atributos na mesma ordem dos atributos.
 + void fromByteArray(byte[]): Função para preencher um objeto com dados vindos de um arranjo de bytes.
 
 ## Modelo
@@ -162,76 +163,68 @@ Classes para o tratamento dos arquivos, como expecializações da classe Arquivo
 
 #### Atributos
 
-+ Arquivo<Serie> arqSerie
 + ArvoreBMais<ParNomeId> indiceNome;
 + HashExtensivel <ParIDID> indiceSerieEpisodio;
-+ ArvoreBMais<ParIDID> indiceSerieAtuacao;
 
 #### Funções
 
-+ Contrutor: Inicializa atributos com super() e cria instâncias da ArvoreBMais e da HashExtensivel (Se o Hash já existir, não sobrescrever)
++ Contrutor: Inicializa atributos com super() e cria instâncias do indiceNome e do indiceSerieEpisodio (Se o Hash já existir, não sobrescrever)
 + Serie read(int id): Função herdada da classe Arquivo, não sendo necessária a sua implementação novamente
 + int create(Serie s): Override da função herdada da classe Arquivo, adicionando a nova entidade aos índices
 + boolean delete(int id): Override da função herdada da classe Arquivo, testando se a exclusão é válida (Série existe no BD e não possui Episódios vinculados a ela) e excluindo os índices
 + boolean update(Serie novaSerie): Override da função herdada da classe Arquivo, atualizando o indiceNome
-+ List<Serie> readNome(String nome): Função que retorna todas as Séries cujo nome começa com a string especificada.
-+ List<Episodio> readEpisodios(int IDSerie): Função que retorna todos os Episódios da Serie. Utilizar nova instância ArquivoEpisodios para isso. 
-+ List<Atuacao> readAtuacao(int IDSerie): Função que retornar todas as Atuações da Série. Utilizar nova instância ArquivoAtuacao para isso.
++ Episodio[] readEpisodios(int id): Função que retorna todos os Episódios da Serie. Utilizar nova instância ArquivoEpisodios para isso. 
++ Serie[] readNome(String nome): Função que retorna todas as Séries cujo nome começa com a string especificada.
 
 ### ArquivoEpisodio extends Arquivo<Episodio>
 
 #### Atributos
 
-+ Arquivo<Episodio> arqEpisodio
 + ArvoreBMais<ParNomeId> indiceNome;
 + HashExtensivel<ParIdId> indiceEpisodioSerie;
 
 #### Funções
 
-+ Contrutor: Inicializa atributos com super() e cria instâncias da ArvoreBMais e da HashExtensivel (Se o Hash já existir, não sobrescrever)
++ Contrutor: Inicializa atributos com super() e cria instâncias do indiceNome e do indiceEpisodioSerie (Se o Hash já existir, não sobrescrever)
 + Serie read(int id): Função herdada da classe Arquivo, não sendo necessária a sua implementação novamente
 + int create(Episodio e): Override da função herdada da classe Arquivo, adicionando a nova entidade aos índices
 + boolean delete(int id): Override da função herdada da classe Arquivo, excluindo os índices
 + boolean update(Episodio novoEpisodio): Override da função herdada da classe Arquivo, atualizando os índices
-+ List<Episodio> readNome(String nome): Função que retorna todas os Episódios cujo nome começa com a string especificada.
-+ List<Episodio> readIDSerie(int IDSerie): Função que retorna todos os Episódios vinculados a uma Série específica. 
++ Episodio[] readNome(String nome): Função que retorna todas os Episódios cujo nome começa com a string especificada.
 
 ### ArquivoAtor extends Arquivo<Ator>
 
 #### Atributos
 
-+ Arquivo<Ator> arqAtor;
 + ArvoreBMais<ParNomeId> indiceNome;
 + ArvoreBMais<ParIDID> indiceAtuacaoSerie;
 + ArvoreBMais<ParIDID> indiceAtuacaoAtor;
 
 #### Funções
 
-+ Contrutor: Inicializa atributos com super() e cria instâncias ArvoreBMais 
++ Contrutor: Inicializa atributos com super() e cria instâncias de indiceNome, indiceAtuacaoSerie e indiceAtuacaoAtor 
 + Serie read(int id): Função herdada da classe Arquivo, não sendo necessária a sua implementação novamente
-+ int create(Serie s): Override da função herdada da classe Arquivo, adicionando a nova entidade aos índices
++ int create(Ator a): Override da função herdada da classe Arquivo, adicionando a nova entidade aos índices
 + boolean delete(int id): Override da função herdada da classe Arquivo, testando se a exclusão é válida (Ator existe no BD e não possui Atuações vinculadas a ele) e excluindo os índices
-+ boolean update(Ator novoAtor): Override da função herdada da classe Arquivo, atualizando o indiceNome
-+ List<Ator> readNome(String nome): Função que retorna todas os Atores cujo nome começa com a string especificada.
-+ List<Atuacao> readAtuacao(int IDSerie): Função que retornar todas as Atuações do Ator. Utilizar nova instância ArquivoAtuacao para isso.
++ boolean update(Ator novoAtor): Override da função herdada da classe Arquivo, atualizando os índices
++ Ator[] readNome(String nome): Função que retorna todas os Atores cujo nome começa com a string especificada.
 
 ### ArquivoAtuacao extends Arquivo<Atuacao>
 
 #### Atributos
 
-+ Arquivo<Atuacao> arqAtuacao;
 + ArvoreBMais<ParNomeId> indiceNome;
 + ArvoreBMais<ParIDID> indiceAtuacaoSerie;
 + ArvoreBMais<ParIDID> indiceAtuacaoAtor;
 
 #### Funções
 
-+ Contrutor: Inicializa atributos com super() e cria instâncias ArvoreBMais 
++ Contrutor: Inicializa atributos com super() e cria instâncias indiceNome, indiceAtuacaoSerie e indiceAtuacaoAtor 
 + Serie read(int id): Função herdada da classe Arquivo, não sendo necessária a sua implementação novamente
-+ int create(Serie s): Override da função herdada da classe Arquivo, adicionando a nova entidade aos índices
++ int create(Atuacao a): Override da função herdada da classe Arquivo, adicionando a nova entidade aos índices
 + boolean delete(int id): Override da função herdada da classe Arquivo, testando se a exclusão é válida (Atuação existe no BD e não possui Séries ou Atores vinculados a ela) e excluindo os índices
-+ boolean update(Atuacao novaAtuacao): Override da função herdada da classe Arquivo, atualizando o indiceNome
-+ List<Ator> readNome(String nome): Função que retorna todas os Atores cujo nome começa com a string especificada.
++ boolean update(Atuacao novaAtuacao): Override da função herdada da classe Arquivo, atualizando os índices
++ List<Atuacao> readPersonagem(String nome): Função que retorna todas as atuações cujo nome do personagem inicia com a string especificada.
 + List<Atuacao> readSerie(int IDSerie): Função que retorna todas as Atuações de uma Série.
 + List<Atuacao> readAtor(int IDAtor): Função que retorna todas as Atuações de um Ator.
 
@@ -307,6 +300,7 @@ Classes que realiza a mediação entre as operações dos arquivos e a entrada d
 
 #### Funções
 
++ Construtor: Cria a instância de arqEpisodio sem a Série.
 + Construtor: Pede uma Série válida como parâmetro e cria a instância de arqEpisodio.
 + int incluirEpisodio(Episodio e): Função para inserir Episódio utilizando os métodos de ArquivoEpisodio.
 + boolean excluirEpisodio(int id): Função para excluir Episodio por ID. Testar se o episódio é válido para remoção (existe no BD e o ID pertence a série).
@@ -333,14 +327,11 @@ Classes que realiza a mediação entre as operações dos arquivos e a entrada d
 + int incluirAtor(Ator a): Função para inserir Ator utilizando os métodos de ArquivoAtor.
 + boolean excluirAtor(int id): Função para excluir Ator por ID. Testar se o episódio é válido para remoção (existe no BD e não tem nenhuma Atuação).
 + boolean excluirAtor(Ator a): Função para excluir Ator dado um objeto Ator. Testar se o Ator é válido para remoção (existe no BD e não pertence a nenhuma Série).
-+ boolean excluirEpisodio(int id, int temp): Função para excluir Episodio por ID de uma temporada. Testar se o episódio é válido para remoção (existe no BD, pertence à série e está na temporada especificada).
-+ boolean alterarEpisodio(Episodio e): Função para alterar algum valor da Episodio.
-+ List<Episodio> buscarEpisodio(): Função que retorna todos os episódios da série correspondente à instância da classe de Controle.
-+ Episodio buscarEpisodio(int id): Função que busca um objeto Episódio pelo ID e retorna caso esteja na série.
-+ List<Episodio> buscarEpisodio(String entrada): Função que lê um nome e retorna um episódio que contém a sequência inserida que está na série especificada.
-+ List<Episodio> buscarEpisodioTemporada(int temp): Função que retorna uma lista de episódios que estão na sérieAtual e presentes na temporada temp.
-+ Episodio buscarEpisodio(int id, int temp): Função que busca um objeto Episódio pelo ID e retorna caso esteja na série e na temporada.
-+ boolean verificarEpisodiosSerie(int idSerie): Função estática que, com um ID de Série, retorna verdadeiro ou falso se tiver um ou mais episódios atrelados a essa série.
++ boolean alterarAtor(Ator novoAtor): Função para alterar algum valor do Ator, usando parâmetro para representar objeto a ser alterado.
++ Ator buscarAtor(int id): Função que recebe um ID e retorna um Objeto Ator.
++ List<Ator> buscarAtor(String entrada): Função que retorna um ou mais Atores cujo nome inicia com a String de entrada.
++ List<Atuacao> buscarAtuacaoAtor(int idAtor): Função para buscar todas as Atuações de um determinado Ator. Para isso, utiliza-se a função ArquivoAtuacao.readAtor().
++ boolean validarAtor(int idAtor): Função estática que recebe um id de Ator como parâmetro e retorna True ou False de acordo com sua existência válida no banco de dados. Para a leitura do objeto, instanciar um novo ArquivoAtor e usar o seu read com o id.
 + void povoar(): Primeiro carregamento de dados para o sistema.
 
 ### ControleAtuacao
@@ -353,15 +344,16 @@ Classes que realiza a mediação entre as operações dos arquivos e a entrada d
 
 + Construtor: Cria a instância de arqAtuacao.
 + int incluirAtuacao(Atuacao a): Função para inserir Atuação utilizando os métodos de ArquivoAtuacao .
-+ boolean excluirAtuacao(int id): Função para excluir Atuação por ID. Testar se o episódio é válido para remoção (existe no BD e não se relaciona com nenhuma Série e nenhum Ator).
++ boolean excluirAtuacao(int id): Função para excluir Atuação por ID. Testar se o Episódio é válido para remoção (existe no BD e não se relaciona com nenhuma Série e nenhum Ator).
 + boolean excluirAtuacao(Atuacao a): Função para excluir Atuação dado um objeto Atuacao. Testar se a Atuação é válida para remoção (existe no BD e não se relaciona com nehuma Série e nenhum Ator).
-+ boolean alterarAtuacao(Atuacao a): Função para alterar algum valor de Atuação.
++ boolean excluirAtuacaoSerie(int IDSerie): Função para excluir todas as Atuações de uma Série.
++ boolean alterarAtuacao(Atuacao novaAtuacao): Função para alterar algum valor de Atuação.
 + Atuacao buscarAtuacao(int id): Função que busca um objeto Atuação pelo ID.
 + List<Atuacao> buscarAtuacao(String entrada): Função que lê um nome e retorna uma lista de Atuações cujo nome do Personagem começa com a String de entrada.
 + List<Atuacao> buscarAtuacaoAtor(int idAtor): Função que retorna uma lista de Atuações de um determinado Ator por meio de ArquivoAtuacao.readAtor(idAtor).
 + List<Atuacao> buscarAtuacaoSerie(int idSerie): Função que retorna uma lista de Atuações de uma determinada Série por meio de ArquivoAtuacao.readSerie(idSerie).
-+ boolean verificarAtuacaoAtor(int idAtor): Função estática que, com um ID de Ator, retorna verdadeiro ou falso se tiver um ou mais Atores atrelados a essa Atuação.
-+ boolean verificarAtuacaoSerie(int idSerie): Função estática que, com um ID de Série, retorna verdadeiro ou falso se tiver uma ou mais Séries atreladas a essa Atuação.
++ boolean verificarAtuacaoAtor(int idAtor): Função estática que, com um ID de Atuacao, retorna verdadeiro ou falso se tiver um ou mais Atores atrelados a essa Atuação.
++ boolean verificarAtuacaoSerie(int idAtuacao): Função estática que, com um ID de Atuacao, retorna verdadeiro ou falso se tiver uma ou mais Séries atreladas a essa Atuação.
 + void povoar(): Primeiro carregamento de dados para o sistema.
 
 ## Visao
@@ -374,26 +366,22 @@ Classes para fazer o controle de Entradas e Saídas do Sistema para cada Entidad
 
 + private static Scanner console = new Scanner(System.in);
 + ControleSerie controleSerie;
-+ ControleAtuacao controleAtuacao;
 
 #### Funções
 
-+ Construtor único criando as instâncias de ControleSerie e ControleAtuacao.
-+ menu(): Função que cria um menu, pede uma entrada de dados enquanto for diferente de 0. Para cada valor entre 1 e 5, realizar certas funções de CRUD, opções como excluir deve chamar função visaoSerie.excluir() que faz a escolha entre excluir por nome ou por ID. Estética:
++ Construtor único criando a instância de ControleSerie.
++ menu(): Função que cria um menu, pede uma entrada de dados enquanto for diferente de 0. 
 ```
 PucFlix v(versao)
 --------------------------
 > Início > Séries
 
-1 - Incluir Série
+1 - Incluir Série 
 2 - Excluir Série
 3 - Alterar Série
 4 - Buscar Série
 5 - Buscar Episódios
-6 - Incluir Atuação
-7 - Excluir Atuação
-8 - Alterar Atuação
-9 - Buscar Atuações de Uma Série
+6 - Editar Elenco
 0 - Sair
 ```
 + void incluirSerie(): Função para chamar ControleSerie.incluirSerie(), passando o resultado de lerSerie como parâmetro. Mostrar mensagem de sucesso ou falha.
@@ -405,16 +393,7 @@ PucFlix v(versao)
 + Serie buscarUmaSerie(): Primeiro, buscar Séries pelo nome com buscarSerieNome(). Em seguida, criar um menu de seleção para escolher e mostrar apenas um.
 + List<Serie> buscarSerieNome(): Ler uma String do usuário e passar como parâmetro para ControleSerie.buscarSerie(String entrada). O objeto retornado é uma Lista, podendo conter elementos ou não.
 + void buscarEpisodios(): Função para buscar todos os Episódios de uma Série, listá-los e mostrar o escolhido pelo usuário.
-+ void incluirAtuacao(): Função para chamar ControleAtuacao.incluirAtuacao(), passando o resultado de lerAtuacao como parâmetro. Mostrar mensagem de sucesso ou falha.
-+ void excluirAtuacao(): Função para chamar ControleAtuacao.excluirAtuacao(). Chamar buscarUmaAtuacao() para encontrar uma Atuacao existente e utilizar retorno como parâmetro em Controleatuacao.excluirAtuacao(). Mostrar mensagem de sucesso ou falha.
-+ void alterarAtuacao(): Chamar buscarUmaAtuacao() para encontrar uma Atuacao existente, depois passar o resultado como parâmetro para lerAtuacao(atuacaoAntiga). Em seguida, utilizar retorno como parâmetro em ControleAtuacao.alterarAtuacao(). Mostrar mensagem de sucesso ou falha.
-+ Serie lerAtuacao(): Função para ler uma entrada de dados com suas devidas verificações e gerar um objeto da Classe Atuacao e retorná-lo. Caso objeto não seja válido, levantar exceção. O questionário deve ter seguinte forma:
-“Qual o/a (atributo) (tipo do atributo e/ou regras/formato)? ” para cada atributo. Ao final, pedir uma confirmação com (S/N).
-+ Serie lerAtuacao(Atuacao antiga): Funcionamento parecido com o lerAtuacao sem parâmetro, porém caso o usuário aperte Enter em um atributo ele terá o mesmo valor que o atributo da Atuacao antiga. Usado no método de alterarAtuacao().
-+ Serie buscarUmaAtuacao(): Primeiro, buscar Atuações pelo nome com buscarAtuacaoNome(). Em seguida, criar um menu de seleção para escolher e mostrar apenas um.
-+ void buscarAtuacoes(): Ler uma Série com lerSerie() e buscar todas as Atuações vinculadas a ela com ControleAtuacao.buscarAtuacaoAtor(). Criar um menu de seleção e mostrar a escolhida pelo usuário.
 + void mostrarSerie(Serie s): Chama o toString da classe Serie
-+ void mostrarAtuacao(Atuacao a): Chama o toString da classe Atuacao
 
 ### VisaoEpisodio
 
@@ -507,6 +486,40 @@ PucFlix v(versao)
 + List<Ator> buscarAtorNome(): Ler uma String do usuário e passar como parâmetro para ControleAtor.buscarAtor(String entrada). O objeto retornado é uma Lista, podendo conter elementos ou não.
 + void buscarAtuacoes(): Ler um Ator com lerAtor() e buscar todas as Atuações vinculadas a ele com ControleAtuacao.buscarAtuacaoAtor(). Criar um menu de seleção e mostrar a escolhida pelo usuário.
 + mostrarAtor(Ator a): Chama o toString da classe Ator.
+
+### VisaoAtuacao
+
+#### Atributos
+
++ private static Scanner console = new Scanner(System.in);
++ ControleAtuacao controleAtuacao;
+
+#### Funções
+
++ Construtor único criando a instância de ControleSerie.
++ menu(): Função que cria um menu, pede uma entrada de dados enquanto for diferente de 0. 
+```
+PucFlix v(versao)
+--------------------------
+> Início > Séries > Elenco
+
+1 - Incluir Atuação
+2 - Excluir Atuação
+3 - Alterar Atuação
+4 - Buscar Atuação
+5 - Buscar Atuações de Uma Série
+0 - Sair
+```
++ void incluirAtuacao(): Função para chamar ControleAtuacao.incluirAtuacao(), passando o resultado de lerAtuacao como parâmetro. Mostrar mensagem de sucesso ou falha.
++ void excluirAtuacao(): Função para chamar ControleAtuacao.excluirAtuacao(). Chamar buscarUmaAtuacao() para encontrar uma Atuacao existente e utilizar retorno como parâmetro em Controleatuacao.excluirAtuacao(). Mostrar mensagem de sucesso ou falha.
++ void alterarAtuacao(): Chamar buscarUmaAtuacao() para encontrar uma Atuacao existente, depois passar o resultado como parâmetro para lerAtuacao(atuacaoAntiga). Em seguida, utilizar retorno como parâmetro em ControleAtuacao.alterarAtuacao(). Mostrar mensagem de sucesso ou falha.
++ Atuacao lerAtuacao(): Função para ler uma entrada de dados com suas devidas verificações e gerar um objeto da Classe Atuacao e retorná-lo. Caso objeto não seja válido, levantar exceção. O questionário deve ter seguinte forma:
+“Qual o/a (atributo) (tipo do atributo e/ou regras/formato)? ” para cada atributo. Ao final, pedir uma confirmação com (S/N).
++ Atuacao lerAtuacao(Atuacao antiga): Funcionamento parecido com o lerAtuacao sem parâmetro, porém caso o usuário aperte Enter em um atributo ele terá o mesmo valor que o atributo da Atuacao antiga. Usado no método de alterarAtuacao().
++ Atuacao buscarUmaAtuacao(): Primeiro, buscar Atuações pelo nome com buscarAtuacaoNome(). Em seguida, criar um menu de seleção para escolher e mostrar apenas um.
++ List<Atuacao> buscarAtuacaoNome(): Ler uma String do usuário e passar como parâmetro para ControleAtuacao.buscarAtuacao(String entrada). O objeto retornado é uma Lista, podendo conter elementos ou não.
++ void buscarAtuacoesSerie(): Ler uma Série com VisaoSerie.buscarUmaSerie() e buscar todas as Atuações vinculadas a ela com ControleAtuacao.buscarAtuacaoSerie(). Criar um menu de seleção e mostrar a escolhida pelo usuário.
++ void mostrarAtuacao(Atuacao a): Chama o toString da classe Atuacao
 
 # Experiências Individuais
 

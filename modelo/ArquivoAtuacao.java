@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Arrays;
 
 public class ArquivoAtuacao extends Arquivo<Atuacao> {
-    Arquivo<Atuacao> arqAtuacao;
     ArvoreBMais<ParNomeID> indicePersonagem;
     ArvoreBMais<ParIDID> indiceSerieAtuacao;
     ArvoreBMais<ParIDID> indiceAtorAtuacao;
@@ -216,8 +215,6 @@ public class ArquivoAtuacao extends Arquivo<Atuacao> {
      * @return Atuacoes - Lista de Atuações que pertencem ao Ator especificado
      */
     public List<Atuacao> readAtor(int IDAtor) throws Exception {
-        
-
         // Testar se o ID da Série procurada é válido
         if( !ControleAtor.validarAtor(IDAtor) )
         // if( IDAtor < 0 ) Caso não tenha essa funcao em controleAtor

@@ -1,7 +1,6 @@
 package modelo;
 
 import entidades.Ator;
-import controle.ControleAtor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +8,6 @@ import java.util.List;
 import aeds3.*;
 
 public class ArquivoAtor extends Arquivo<Ator> {
-    Arquivo<Ator> arqAtor;
     ArvoreBMais<ParNomeID> indiceNome;
     ArvoreBMais<ParIDID> indiceAtuacaoSerie;
     ArvoreBMais<ParIDID> indiceAtuacaoAtor;
