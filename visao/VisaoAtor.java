@@ -58,7 +58,7 @@ public class VisaoAtor {
                 case 1: incluirAtor(); break;
                 case 2: excluirAtor(); break;
                 case 3: alterarAtor(); break;
-                case 4: mostrarAtor(buscarUmAtor()); break;
+                case 4: buscarUmAtor(); break;
                 case 5: buscarAtuacoes(); break;
                 case 0: System.out.println("Saindo..."); break;
                 default: System.err.println("[ERRO]: Opção inválida!"); break;
@@ -324,33 +324,34 @@ public class VisaoAtor {
         List<Ator> atores = buscarAtorNome();
         if (atores == null || atores.isEmpty())
             System.err.println("[ERRO]: Nenhum ator encontrado!");
-
-        if (atores.size() == 1)
-            return atores.get(0);
-
-        do {
-            // Exibir todas as Séries encontradas pelo nome
-            System.out.println("Escolha um Ator: ");    
-            int n = 0;    
-            for (Ator at : atores) 
-                System.out.println((n++) + " - " + at.getNome());    
-            // Tentar ler a opção do console
-            try {
-                idx = Integer.valueOf(console.nextLine());
-            } catch(NumberFormatException e) {
-                idx = -1;
-            }    
-            // Testar a opção
-            if (0 <= idx && idx <= atores.size()) {
-                // Identificar a Série selecionada pela sua posição
-                a = atores.get(idx);    
-                // Atualizar variável de controle
-                dadosCorretos = true;
-            } else {
-                System.err.println("[ERRO]: Ator não está presente na lista!\n");
-            }
-        } while(!dadosCorretos); 
-
+        else if (atores.size() == 1)
+            a = atores.get(0);
+        else {
+            do {
+                // Exibir todas as Séries encontradas pelo nome
+                System.out.println("Escolha um Ator: ");    
+                int n = 0;    
+                for (Ator at : atores) 
+                    System.out.println((n++) + " - " + at.getNome());    
+                // Tentar ler a opção do console
+                try {
+                    idx = Integer.valueOf(console.nextLine());
+                } catch(NumberFormatException e) {
+                    idx = -1;
+                }    
+                // Testar a opção
+                if (0 <= idx && idx <= atores.size()) {
+                    // Identificar a Série selecionada pela sua posição
+                    a = atores.get(idx);    
+                    // Atualizar variável de controle
+                    dadosCorretos = true;
+                } else {
+                    System.err.println("[ERRO]: Ator não está presente na lista!\n");
+                }
+            } while(!dadosCorretos); 
+        }
+        if (a != null) 
+            mostrarAtor(a);
         return a;
     }
 
@@ -392,7 +393,7 @@ public class VisaoAtor {
      */
     public void mostrarAtor(Ator a) {
         if (a != null) {
-            System.out.println("\n" + a);
+            System.out.println(a);
         }
     }
 }

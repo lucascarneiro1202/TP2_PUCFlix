@@ -215,7 +215,7 @@ public class ControleSerie {
 
             criadores.clear();
             criadores.add("Lauren LeFranc");
-            incluirSerie(new Serie("Pinguim", 2024, 
+            incluirSerie(new Serie("The Penguin", 2024, 
             "Acompanha a transformação de Oz Cobb de um desconhecido desfigurado em um famoso gângster de Gotham", 
             "HBO MAX", 8, criadores, 
             "Gangster"));

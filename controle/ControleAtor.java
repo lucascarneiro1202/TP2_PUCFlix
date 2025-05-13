@@ -138,6 +138,14 @@ public class ControleAtor {
             incluirAtor(new Ator("Dean Norris", 'M', java.time.LocalDate.of(1963, 4, 8), "EUA"));
             incluirAtor(new Ator("Betsy Brandt", 'F', java.time.LocalDate.of(1973, 3, 14), "EUA"));
 
+            // The Penguin
+            incluirAtor(new Ator("Colin Farrell", 'M', java.time.LocalDate.of(1976, 5, 31), "Ireland"));
+            incluirAtor(new Ator("Cristin Milioti", 'F', java.time.LocalDate.of(1985, 8, 16), "EUA"));
+            incluirAtor(new Ator("Michael Kelly", 'M', java.time.LocalDate.of(1969, 5, 22), "EUA"));
+            incluirAtor(new Ator("Rhenzy Feliz", 'M', java.time.LocalDate.of(1997, 10, 26), "EUA"));
+            incluirAtor(new Ator("Shohreh Aghdashloo", 'F', java.time.LocalDate.of(1952, 5, 11), "Iran"));
+
+
             // Game of Thrones cast
             incluirAtor(new Ator("Emilia Clarke", 'F', java.time.LocalDate.of(1986, 10, 23), "UK"));
             incluirAtor(new Ator("Kit Harington", 'M', java.time.LocalDate.of(1986, 12, 26), "UK"));
@@ -166,6 +174,8 @@ public class ControleAtor {
             incluirAtor(new Ator("Cate Blanchett", 'F', java.time.LocalDate.of(1969, 5, 14), "Australia"));
             incluirAtor(new Ator("Tom Hanks", 'M', java.time.LocalDate.of(1956, 7, 9), "EUA"));
             incluirAtor(new Ator("Viola Davis", 'F', java.time.LocalDate.of(1965, 8, 11), "EUA"));
+            
+
             
             System.out.println("\nAtores povoados com sucesso!");
         } catch (Exception e) {

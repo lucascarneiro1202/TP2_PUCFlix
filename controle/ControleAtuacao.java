@@ -244,6 +244,16 @@ public class ControleAtuacao {
             incluirAtuacao(new Atuacao(4,2, "Hank Schrader"));
             incluirAtuacao(new Atuacao(5,2, "Marie Schrader"));
 
+            // The Penguin 
+            incluirAtuacao(new Atuacao(6,6, "Oswald 'Oz' Cobb"));
+            incluirAtuacao(new Atuacao(7,6, "Sofia Falcone"));
+            incluirAtuacao(new Atuacao(8,6, "Johnny Vitti"));
+            incluirAtuacao(new Atuacao(9,6, "Victor Aguilar"));
+            incluirAtuacao(new Atuacao(10,6, "Nadia Maroni"));
+
+            // Black Mirror
+            incluirAtuacao(new Atuacao(7,1, "Nanette Cole"));
+
             
             System.out.println("\nAtuaçãos povoados!");
 
