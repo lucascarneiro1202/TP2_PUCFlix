@@ -536,6 +536,7 @@ PucFlix v(versao)
 ## João
 
 <div align="justify">
+  A realização do TP2 se mostrou muito importante para o meu desenvolvimento, a fim de compreender como funciona melhor o tratamento e armazenamento de dados em memória secundária. O processo requeriu estudos para ter melhor compreensão do conteúdo e foi necessário o uso de estruturas como à arvore B+ e Tabela Hash para organizar as informações de um banco de dados de séries, com seus respectivos episódios e atuações. No geral, se demonstrou ser um processo tranquilo, graças ao apoio dos meus colegas de equipe e o conteúdo promovido dentro de sala de aula.  
 </div>
 
 # Planos futuros
