@@ -531,12 +531,13 @@ PucFlix v(versao)
 ## Lucas
 
 <div align="justify">
+    O TP2 contribuiu significativamente para o meu entendimento acerca da implementação física de relacionamentos N:N. Nesse sentido, pude explorar diferentes formas de implementar relacionamentos tão relevantes - seja com dois índices indiretos com Árvores B+ com os identificadores únicos, seja com a criação de uma nova entidade intermediária. Além disso, planejar as entregas e distribuir as responsabilidades dos meus colegas mostrou-se ser um desafio maior do que esperado, o que com certeza agrega à minha formação como programador e como colega de trabalho.
 </div>
 
 ## João
 
 <div align="justify">
-  A realização do TP2 se mostrou muito importante para o meu desenvolvimento, a fim de compreender como funciona melhor o tratamento e armazenamento de dados em memória secundária. O processo requeriu estudos para ter melhor compreensão do conteúdo e foi necessário o uso de estruturas como à arvore B+ e Tabela Hash para organizar as informações de um banco de dados de séries, com seus respectivos episódios e atuações. No geral, se demonstrou ser um processo tranquilo, graças ao apoio dos meus colegas de equipe e o conteúdo promovido dentro de sala de aula.  
+    A realização do TP2 se mostrou muito importante para o meu desenvolvimento, a fim de compreender como funciona melhor o tratamento e armazenamento de dados em memória secundária. O processo requeriu estudos para ter melhor compreensão do conteúdo e foi necessário o uso de estruturas como Arvore B+ e Tabela Hash Extensível para organizar as informações de um banco de dados de séries, com seus respectivos episódios e atuações. No geral, demonstrou-se ser um processo tranquilo, graças ao apoio dos meus colegas de equipe e o conteúdo promovido dentro de sala de aula.  
 </div>
 
 # Planos futuros
