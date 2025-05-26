@@ -526,6 +526,7 @@ PucFlix v(versao)
 ## Augusto
 
 <div align="justify">
+  Contribuir para o TP2 me fez entender, de maneira completa, todos os mecanismos para a implementação do relacionamento N:N. Durante o projeto, desenvolvi a parte das classes "atuacoes", portanto tive que dominar, de maneira integral, a lógica por trás da coesão deste tipo de relacionamento. Por fim, esta tarefa do projeto foi relativamente tranquila de se implementar ao comparar com o primeiro Trabalho.
 </div>
 
 ## Lucas
